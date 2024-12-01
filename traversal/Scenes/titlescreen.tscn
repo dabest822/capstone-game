@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://babebq6c5stcw"]
+
+[ext_resource type="FontFile" uid="uid://dgho466bnv5fy" path="res://Fonts/ARCADECLASSIC.TTF" id="1_cxl8y"]
+[ext_resource type="FontFile" uid="uid://3yvqlucxufvv" path="res://Fonts/nasalization.ttf" id="1_qun0q"]
+[ext_resource type="FontFile" uid="uid://ibky2qpmfxfh" path="res://Fonts/Orbitron-VariableFont_wght.ttf" id="1_y5wlk"]
+[ext_resource type="Script" path="res://Scripts/buttons.gd" id="2_4i0rp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itfgc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eoq85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wetsp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TraversalTitle" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 32.0
+offset_right = 7997.0
+offset_bottom = 1517.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("1_qun0q")
+theme_override_font_sizes/font_size = 1250
+text = "TRAVERSAL"
+
+[node name="WynnCredits" type="Label" parent="."]
+offset_left = 1066.0
+offset_top = 628.0
+offset_right = 1898.0
+offset_bottom = 828.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("1_cxl8y")
+theme_override_font_sizes/font_size = 150
+text = "Wynn © 2024"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 185.0
+offset_top = 433.0
+offset_right = 833.0
+offset_bottom = 693.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("1_y5wlk")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxEmpty_itfgc")
+text = "PLAY"
+flat = true
+script = ExtResource("2_4i0rp")
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 490.0
+offset_top = 580.0
+offset_right = 1035.0
+offset_bottom = 840.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("1_y5wlk")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eoq85")
+text = "QUIT"
+flat = true
+script = ExtResource("2_4i0rp")
+
+[node name="Options" type="Button" parent="."]
+offset_left = 314.0
+offset_top = 511.0
+offset_right = 1337.0
+offset_bottom = 771.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("1_y5wlk")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wetsp")
+text = "OPTIONS"
+flat = true
+script = ExtResource("2_4i0rp")
