@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bvffmhqcbdgkg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI Layer/HUD"]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="PrehistoricLvl" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities"]
+
+[node name="Triggers+Areas" type="Node2D" parent="."]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="Audio"]
