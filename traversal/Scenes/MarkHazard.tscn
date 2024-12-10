@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsnmdmw02ntpc"]
+
+[ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ak2xt"]
+radius = 25.0
+height = 142.0
+
+[node name="MainCharacter" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="MarkSprite" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(104, 73)
+texture = ExtResource("1_08u8n")
+hframes = 12
+vframes = 16
+
+[node name="MarkAnims" type="AnimationPlayer" parent="CharacterBody2D/MarkSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(58, 80)
+shape = SubResource("CapsuleShape2D_ak2xt")

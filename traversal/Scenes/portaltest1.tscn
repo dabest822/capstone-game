@@ -1,0 +1,131 @@
+[gd_scene load_steps=18 format=3 uid="uid://c8qvxvjp46sdu"]
+
+[ext_resource type="Texture2D" uid="uid://o8ma7wmg5o16" path="res://Sprites/Portals/best gate cropped.png" id="1_r3nc3"]
+[ext_resource type="Texture2D" uid="uid://bg1pqqbvo8e02" path="res://Sprites/Portals/third row.png" id="2_h6f85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjkwm"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(1, 1, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qwpk"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(65, 1, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnfk7"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(129, 1, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_metnv"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(193, 1, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qrpm"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(258, 1, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7steq"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(2, 65, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lpvm"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(130, 65, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vjmj"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(194, 65, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijs08"]
+atlas = ExtResource("1_r3nc3")
+region = Rect2(258, 65, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xjal"]
+atlas = ExtResource("2_h6f85")
+region = Rect2(1, 0, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mlb0"]
+atlas = ExtResource("2_h6f85")
+region = Rect2(66, 0, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj1qa"]
+atlas = ExtResource("2_h6f85")
+region = Rect2(131, 0, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgwtw"]
+atlas = ExtResource("2_h6f85")
+region = Rect2(195, 0, 64, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d17v"]
+atlas = ExtResource("2_h6f85")
+region = Rect2(259, 0, 64, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wuvm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjkwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qwpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnfk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_metnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qrpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7steq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lpvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vjmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijs08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xjal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mlb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj1qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgwtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d17v")
+}],
+"loop": true,
+"name": &"portalidle",
+"speed": 13.0
+}]
+
+[node name="Portal" type="Node2D"]
+
+[node name="PortalSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wuvm1")
+animation = &"portalidle"
+frame_progress = 0.0882913
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="Glow" type="Sprite2D" parent="Effects"]
+
+[node name="Aura" type="Sprite2D" parent="Effects"]
+
+[node name="Particles" type="GPUParticles2D" parent="Effects"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Lighting" type="PointLight2D" parent="."]
