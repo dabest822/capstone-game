@@ -17,12 +17,12 @@
 [node name="TraversalTitle" type="Label" parent="."]
 z_index = 3
 offset_left = 186.0
-offset_top = 32.0
-offset_right = 7997.0
-offset_bottom = 1517.0
-scale = Vector2(0.1, 0.1)
+offset_top = 89.0
+offset_right = 15809.0
+offset_bottom = 3059.0
+scale = Vector2(0.05, 0.05)
 theme_override_fonts/font = ExtResource("1_qun0q")
-theme_override_font_sizes/font_size = 1250
+theme_override_font_sizes/font_size = 2500
 text = "TRAVERSAL"
 
 [node name="WynnCredits" type="Label" parent="."]
