@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://babebq6c5stcw"]
+[gd_scene load_steps=9 format=3 uid="uid://babebq6c5stcw"]
 
 [ext_resource type="FontFile" uid="uid://dgho466bnv5fy" path="res://Fonts/ARCADECLASSIC.TTF" id="1_cxl8y"]
 [ext_resource type="FontFile" uid="uid://3yvqlucxufvv" path="res://Fonts/nasalization.ttf" id="1_qun0q"]
 [ext_resource type="FontFile" uid="uid://ibky2qpmfxfh" path="res://Fonts/Orbitron-VariableFont_wght.ttf" id="1_y5wlk"]
 [ext_resource type="Script" path="res://Scripts/buttons.gd" id="2_4i0rp"]
+[ext_resource type="PackedScene" uid="uid://w7bbtfkl36gt" path="res://Scenes/testingshader.tscn" id="5_1fqgp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itfgc"]
 
@@ -14,6 +15,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="TraversalTitle" type="Label" parent="."]
+z_index = 3
 offset_left = 186.0
 offset_top = 32.0
 offset_right = 7997.0
@@ -71,3 +73,8 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_wetsp")
 text = "OPTIONS"
 flat = true
 script = ExtResource("2_4i0rp")
+
+[node name="ShaderDisplay" parent="." instance=ExtResource("5_1fqgp")]
+layer = -1
+
+[editable path="ShaderDisplay"]

@@ -114,7 +114,7 @@ animations = [{
 [node name="PortalSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wuvm1")
 animation = &"portalidle"
-frame_progress = 0.0882913
+frame_progress = 0.953656
 
 [node name="Effects" type="Node2D" parent="."]
 
