@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dxbkwf85dmm82"]
+
+[ext_resource type="Shader" path="res://wormholeborder.gdshader" id="1_mdop6"]
+
+[resource]
+shader = ExtResource("1_mdop6")
+shader_parameter/border_width = 0.05
+shader_parameter/border_color = Color(0, 0, 0, 1)

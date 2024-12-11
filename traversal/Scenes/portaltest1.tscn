@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8qvxvjp46sdu"]
+[gd_scene load_steps=20 format=3 uid="uid://c8qvxvjp46sdu"]
 
 [ext_resource type="Texture2D" uid="uid://o8ma7wmg5o16" path="res://Sprites/Portals/best gate cropped.png" id="1_r3nc3"]
+[ext_resource type="Script" path="res://Scenes/portal1.gd" id="1_rksv3"]
 [ext_resource type="Texture2D" uid="uid://bg1pqqbvo8e02" path="res://Sprites/Portals/third row.png" id="2_h6f85"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjkwm"]
@@ -109,23 +110,22 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ri2bg"]
+radius = 33.0
+height = 164.0
+
 [node name="Portal" type="Node2D"]
 
 [node name="PortalSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(883, 444)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_wuvm1")
 animation = &"portalidle"
-frame_progress = 0.181911
+frame_progress = 0.803347
+script = ExtResource("1_rksv3")
 
-[node name="Effects" type="Node2D" parent="."]
+[node name="Area2DPortal" type="Area2D" parent="."]
 
-[node name="Glow" type="Sprite2D" parent="Effects"]
-
-[node name="Aura" type="Sprite2D" parent="Effects"]
-
-[node name="Particles" type="GPUParticles2D" parent="Effects"]
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-[node name="Lighting" type="PointLight2D" parent="."]
+[node name="CollisionShapePortal" type="CollisionShape2D" parent="Area2DPortal"]
+position = Vector2(881, 444)
+shape = SubResource("CapsuleShape2D_ri2bg")
