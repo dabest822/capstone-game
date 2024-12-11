@@ -2,26 +2,33 @@ extends Control
 
 @onready var intro_music = $AudioStreamPlayer  # Reference to the AudioStreamPlayer
 
-@export var title_screen_path: String = "res://Scenes/Title Screen.tscn"  # Path to the Title Screen
+@export var title_screen_path: String = "res://Scenes/titlescreen.tscn"  # Path to the Title Screen
 
-# Play the "Intro" animation, then queue the "FadeOut" animation
 func _ready():
-	# Play the intro music if it exists
+	print("Splash screen is running...")
+	
+	# Play the intro music if it's set
 	if intro_music:
+		print("Playing intro music...")
 		intro_music.play()
-
-	$AnimationPlayer.play("Intro")
-	$AnimationPlayer.queue("FadeOut")
-
-# This will be called when the "FadeOut" animation finishes.
-# It will switch to the Title Screen and stop the music.
+	
+	# Play the "Intro" animation and queue "FadeOut"
+	if $AnimationPlayer.has_animation("Intro"):
+		print("Playing Intro animation...")
+		$AnimationPlayer.play("Intro")
+		$AnimationPlayer.queue("FadeOut")
+	else:
+		print("Intro animation not found!")
+	
+# This method is called when an animation finishes playing
 func _on_animation_player_animation_finished(_anim_name):
-	if _anim_name == "FadeOut":  # Only switch when "FadeOut" animation is done
-		print("Finished playing the engine splash, switching to Title Screen!")
+	print("Animation finished: ", _anim_name)
+	if _anim_name == "FadeOut":  # Check if "FadeOut" animation finished
+		print("Switching to Title Screen...")
 		
-		# Stop the intro music (optional: fade it out instead)
+		# Stop the intro music
 		if intro_music:
 			intro_music.stop()
 		
-		# Switch to the Title Screen scene
+		# Switch to the Title Screen
 		get_tree().change_scene_to_file(title_screen_path)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=53 format=3 uid="uid://bsnmdmw02ntpc"]
+[gd_scene load_steps=52 format=3 uid="uid://bsnmdmw02ntpc"]
 
-[ext_resource type="Script" path="res://Scenes/markhazard.gd" id="1_3nkry"]
+[ext_resource type="Script" path="res://Scripts/markhazard.gd" id="1_3nkry"]
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
-[ext_resource type="PackedScene" uid="uid://c8qvxvjp46sdu" path="res://Scenes/portaltest1.tscn" id="2_2petc"]
 [ext_resource type="Texture2D" uid="uid://dahnxi5hvrhmy" path="res://Platforms/testplatform.png" id="3_3sjy4"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="3_hfyyh"]
 
@@ -347,7 +346,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txq1k"]
-size = Vector2(632, 49)
+size = Vector2(1112, 49)
 
 [node name="MainCharacter" type="Node2D"]
 
@@ -368,20 +367,14 @@ position = Vector2(42, 0)
 sprite_frames = SubResource("SpriteFrames_gj672")
 animation = &"Idle"
 
-[node name="Portal" parent="." instance=ExtResource("2_2petc")]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2DPlatform" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(836, 555)
-scale = Vector2(19.7571, 3)
+position = Vector2(579.5, 555)
+scale = Vector2(32.4857, 3)
 texture = ExtResource("3_3sjy4")
 hframes = 3
 
 [node name="CollisionShape2DPlatform" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(803, 562.5)
+position = Vector2(563, 562.5)
 shape = SubResource("RectangleShape2D_txq1k")
-
-[connection signal="body_entered" from="Portal/Area2DPortal" to="CharacterBody2D" method="_on_area_2d_portal_body_entered"]
-
-[editable path="Portal"]
