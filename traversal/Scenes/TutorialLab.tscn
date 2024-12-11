@@ -1,8 +1,8 @@
 [gd_scene load_steps=52 format=4 uid="uid://d2j543kuppuih"]
 
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_514bb"]
-[ext_resource type="Script" path="res://Scenes/npcdialogue.gd" id="1_fo3yk"]
-[ext_resource type="Script" path="res://Scenes/2d3dtest.gd" id="1_w2ho3"]
+[ext_resource type="Script" path="res://Scripts/npcdialogue.gd" id="1_fo3yk"]
+[ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="1_w2ho3"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="2_1l5g8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ctalb"]

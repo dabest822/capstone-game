@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://clc20cl68j84w"]
 
-[ext_resource type="Script" path="res://Scenes/drchentesting.gd" id="1_ldhka"]
+[ext_resource type="Script" path="res://Scripts/drchentesting.gd" id="1_ldhka"]
 [ext_resource type="Texture2D" uid="uid://bei0gi7nevot1" path="res://Sprites/DrChen/WalkRunJumpIdle.png" id="1_rln2h"]
 [ext_resource type="Texture2D" uid="uid://b63jmsx6edto7" path="res://Sprites/DrChen/walking.png" id="2_rl2i2"]
 
@@ -288,7 +288,6 @@ frame_progress = 0.663751
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/AnimatedSprite2D2"]
 position = Vector2(480, -490)
 rotation = -0.855211
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_51yap")
 
 [node name="Area2D" type="Area2D" parent="."]
