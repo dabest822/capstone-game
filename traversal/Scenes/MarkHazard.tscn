@@ -342,15 +342,15 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o87ow"]
+polygon = PackedVector2Array(-638.777, -79.4005, -652.885, -80.387, -656.955, -72.8745, -665.878, -77.0425, -703.678, -53.4589, -705.878, -42.2714, -738.296, -24.691, -753.488, -10.159, -727.049, 17.2078, -710.938, 9.82837, -677.731, -19.0383, -647.148, -50.9237, -647.671, -63.7193, -640.519, -64.6368, -635.793, -71.3947)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ak2xt"]
 radius = 29.0
 height = 142.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txq1k"]
 size = Vector2(1112, 49)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o87ow"]
-polygon = PackedVector2Array(-636.628, -75.7564, -643.722, -74.4612, -650.91, -67.5099, -660.785, -69.0901, -681.514, -56.0013, -698.719, -42.1462, -698.095, -37.1854, -693.901, -34.2861, -722.442, -19.2069, -729.631, -12.2556, -742.571, 0.256714, -744.775, 5.17017, -739.886, 8.78833, -735.667, 10.2736, -720.351, 24.675, -715.461, 28.2932, -713.905, 19.8329, -703.074, 6.57788, -702.569, 18.6088, -688.239, 7.53424, -673.071, -11.3055, -669.524, -11.9532, -659.531, -17.443, -653.685, -28.6601, -650.138, -29.3077, -647.238, -33.5023, -640.697, -44.0005, -641.897, -56.7504, -634.804, -58.0457, -630.443, -65.0444, -631.762, -70.7242)
 
 [node name="MainCharacter" type="Node2D"]
 
@@ -361,15 +361,20 @@ script = ExtResource("1_3nkry")
 
 [node name="SpriteContainer" type="Node2D" parent="CharacterBody2D1"]
 z_index = 1
-position = Vector2(604, 475)
+position = Vector2(604, 480)
 
 [node name="AnimatedSprite2D1" type="AnimatedSprite2D" parent="CharacterBody2D1/SpriteContainer"]
-position = Vector2(42, 0)
 sprite_frames = SubResource("SpriteFrames_gj672")
 animation = &"Idle"
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D1/SpriteContainer/AnimatedSprite2D1"]
+position = Vector2(480, -490)
+rotation = -0.855211
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_o87ow")
+
 [node name="CollisionShapeMark" type="CollisionShape2D" parent="CharacterBody2D1"]
-position = Vector2(645, 480)
+position = Vector2(605, 480)
 shape = SubResource("CapsuleShape2D_ak2xt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -390,15 +395,13 @@ position = Vector2(0, 220)
 scale = Vector2(1.33, 1.33)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(1140, 10)
-rotation = -0.00491154
+position = Vector2(1089, 62)
+rotation = 0.698132
+skew = -0.349066
 color = Color(0.941176, 0.886275, 0.784314, 1)
-energy = 0.14
+energy = 0.2
 shadow_enabled = true
-shadow_color = Color(0.180392, 0.180392, 0.180392, 1)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DirectionalLight2D"]
-rotation = -0.797282
-occluder = SubResource("OccluderPolygon2D_o87ow")
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
 
 [editable path="DrChen"]

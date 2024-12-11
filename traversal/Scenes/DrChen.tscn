@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://clc20cl68j84w"]
+[gd_scene load_steps=41 format=3 uid="uid://clc20cl68j84w"]
 
 [ext_resource type="Script" path="res://Scenes/drchentesting.gd" id="1_ldhka"]
 [ext_resource type="Texture2D" uid="uid://bei0gi7nevot1" path="res://Sprites/DrChen/WalkRunJumpIdle.png" id="1_rln2h"]
@@ -262,6 +262,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_51yap"]
+polygon = PackedVector2Array(-675.102, -46.4989, -682.812, -47.7469, -702.859, -44.8957, -702.4, -41.3194, -696.856, -39.514, -703.091, -31.444, -742.168, -19.9999, -745.941, -16.7196, -741.349, -11.4366, -708.013, -21.8646, -718.846, 11.4019, -712.941, 18.1943, -699.09, -17.6965, -683.34, -30.0629, -672.118, -38.493)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr56c"]
 radius = 34.0
 height = 78.0
@@ -281,6 +284,12 @@ sprite_frames = SubResource("SpriteFrames_dc4py")
 animation = &"Idle"
 frame = 4
 frame_progress = 0.663751
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/AnimatedSprite2D2"]
+position = Vector2(480, -490)
+rotation = -0.855211
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_51yap")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(216, 206)
