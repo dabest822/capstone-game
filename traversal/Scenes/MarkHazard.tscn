@@ -1,7 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://bsnmdmw02ntpc"]
+[gd_scene load_steps=55 format=3 uid="uid://bsnmdmw02ntpc"]
 
 [ext_resource type="Script" path="res://Scripts/markhazard.gd" id="1_3nkry"]
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
+[ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="2_pqvja"]
 [ext_resource type="Texture2D" uid="uid://dahnxi5hvrhmy" path="res://Platforms/testplatform.png" id="3_3sjy4"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="3_hfyyh"]
 [ext_resource type="PackedScene" uid="uid://clc20cl68j84w" path="res://Scenes/DrChen.tscn" id="5_amggi"]
@@ -252,7 +253,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle2",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -343,7 +344,7 @@ animations = [{
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o87ow"]
-polygon = PackedVector2Array(-638.777, -79.4005, -652.885, -80.387, -656.955, -72.8745, -665.878, -77.0425, -703.678, -53.4589, -705.878, -42.2714, -738.296, -24.691, -753.488, -10.159, -727.049, 17.2078, -710.938, 9.82837, -677.731, -19.0383, -647.148, -50.9237, -647.671, -63.7193, -640.519, -64.6368, -635.793, -71.3947)
+polygon = PackedVector2Array(-638.284, -86.4543, -624.246, -64.2076, -659.751, -22.7428, -720.883, 30.398, -740.959, 13.3998, -755.555, -11.0123, -737.048, -32.4009, -670.633, -90.134)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ak2xt"]
 radius = 29.0
@@ -364,13 +365,17 @@ z_index = 1
 position = Vector2(604, 480)
 
 [node name="AnimatedSprite2D1" type="AnimatedSprite2D" parent="CharacterBody2D1/SpriteContainer"]
+material = ExtResource("2_pqvja")
 sprite_frames = SubResource("SpriteFrames_gj672")
-animation = &"Idle"
+animation = &"Idle2"
+frame = 2
+frame_progress = 0.809403
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D1/SpriteContainer/AnimatedSprite2D1"]
-position = Vector2(480, -490)
+position = Vector2(485, -489)
 rotation = -0.855211
 scale = Vector2(1, 1)
+skew = 0.0174533
 occluder = SubResource("OccluderPolygon2D_o87ow")
 
 [node name="CollisionShapeMark" type="CollisionShape2D" parent="CharacterBody2D1"]
@@ -396,8 +401,8 @@ scale = Vector2(1.33, 1.33)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1089, 62)
-rotation = 0.698132
-skew = -0.349066
+rotation = 0.767945
+skew = -0.523599
 color = Color(0.941176, 0.886275, 0.784314, 1)
 energy = 0.2
 shadow_enabled = true

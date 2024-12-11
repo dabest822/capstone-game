@@ -4,10 +4,7 @@
 
 [resource]
 shader = ExtResource("1_mubse")
-shader_parameter/light_color = Vector3(1, 1, 1)
-shader_parameter/light_position = Vector2(0, 0)
-shader_parameter/viewport_size = Vector2(1, 1)
-shader_parameter/threshold_1 = 0.5
-shader_parameter/threshold_2 = 0.8
-shader_parameter/outline_color = Vector3(0, 0, 0)
-shader_parameter/outline_thickness = 0.05
+shader_parameter/width = 1
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/flickering_speed = null
+shader_parameter/minimal_flickering_alpha = null

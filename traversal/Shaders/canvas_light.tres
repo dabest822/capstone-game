@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://t4bd8knvp5ra"]
-
-[ext_resource type="Shader" path="res://Shaders/canvaslight.gdshader" id="1_j2uyq"]
-
-[resource]
-shader = ExtResource("1_j2uyq")
-shader_parameter/shade_steps = 3
-shader_parameter/light_direction = Vector2(4, -1)
-shader_parameter/light_intensity = 1.0

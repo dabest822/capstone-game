@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 250.0
 const RUN_SPEED = 500.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
@@ -34,7 +34,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
-			animated_sprite.play("Idle")
+			if animated_sprite.flip_h:
+				animated_sprite.play("Idle2") # Play Idle2 if facing left
+			else:
+				animated_sprite.play("Idle") # Play Idle if facing right
 
 	# Handle airborne animation
 	if not is_on_floor() and velocity.y < 0:
