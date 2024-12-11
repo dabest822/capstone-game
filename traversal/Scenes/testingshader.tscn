@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://w7bbtfkl36gt"]
 
 [ext_resource type="Script" path="res://Scripts/timegate.gd" id="1_r5n4w"]
-[ext_resource type="Material" uid="uid://bi33h6onhhswy" path="res://timegate.tres" id="2_gr4vh"]
+[ext_resource type="Material" uid="uid://bi33h6onhhswy" path="res://Shaders/timegate.tres" id="2_gr4vh"]
 
 [node name="ShaderDisplay" type="CanvasLayer"]
 script = ExtResource("1_r5n4w")
