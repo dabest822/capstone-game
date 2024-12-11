@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yce1r8tifr50"
-path="res://.godot/imported/DS DSi - Dinosaur King - Africa Laboratory.png-d91af380c822db36f47eb05aa74069d5.ctex"
+uid="uid://b8elvyg8mn1gw"
+path="res://.godot/imported/labnpcs.png-6f9cacb823da0264aa79aac378b9a319.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Lab/DS DSi - Dinosaur King - Africa Laboratory.png"
-dest_files=["res://.godot/imported/DS DSi - Dinosaur King - Africa Laboratory.png-d91af380c822db36f47eb05aa74069d5.ctex"]
+source_file="res://Lab/NPCs/labnpcs.png"
+dest_files=["res://.godot/imported/labnpcs.png-6f9cacb823da0264aa79aac378b9a319.ctex"]
 
 [params]
 
