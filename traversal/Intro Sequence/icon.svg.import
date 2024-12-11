@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://74512bqehk41"
-path="res://.godot/imported/pixel_logo_whites.png-c252e2721ee47106ae36c90e85a8f223.ctex"
+uid="uid://cx50cnp3c2xbd"
+path="res://.godot/imported/icon.svg-f5860bb9d5d22902a69adc121f116fa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Intro (Not Mine)/pixel_logo_whites.png"
-dest_files=["res://.godot/imported/pixel_logo_whites.png-c252e2721ee47106ae36c90e85a8f223.ctex"]
+source_file="res://Intro Sequence/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-f5860bb9d5d22902a69adc121f116fa9.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

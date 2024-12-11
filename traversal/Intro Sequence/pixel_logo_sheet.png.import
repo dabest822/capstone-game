@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dv3rxypw5wtrh"
-path="res://.godot/imported/pixel_logo_sheet.png-c83c3f1ceead643943a9235998a571e9.ctex"
+path="res://.godot/imported/pixel_logo_sheet.png-55f267fa8e38cf127e121207c92c6943.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Intro (Not Mine)/pixel_logo_sheet.png"
-dest_files=["res://.godot/imported/pixel_logo_sheet.png-c83c3f1ceead643943a9235998a571e9.ctex"]
+source_file="res://Intro Sequence/pixel_logo_sheet.png"
+dest_files=["res://.godot/imported/pixel_logo_sheet.png-55f267fa8e38cf127e121207c92c6943.ctex"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://djdqyhfnp6xgj"
-path="res://.godot/imported/m5x7.ttf-3df02fc32e9e5d7900987265b4499e79.fontdata"
+uid="uid://dv7r4qm33eole"
+path="res://.godot/imported/Not Jam UI 12.ttf-d09717da3ef7c4a651cc210bf94855db.fontdata"
 
 [deps]
 
-source_file="res://Intro (Not Mine)/m5x7.ttf"
-dest_files=["res://.godot/imported/m5x7.ttf-3df02fc32e9e5d7900987265b4499e79.fontdata"]
+source_file="res://Intro Sequence/Not Jam UI 12.ttf"
+dest_files=["res://.godot/imported/Not Jam UI 12.ttf-d09717da3ef7c4a651cc210bf94855db.fontdata"]
 
 [params]
 
