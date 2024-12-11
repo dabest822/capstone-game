@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://clc20cl68j84w"]
+[gd_scene load_steps=40 format=3 uid="uid://clc20cl68j84w"]
 
+[ext_resource type="Script" path="res://Scenes/drchentesting.gd" id="1_ldhka"]
 [ext_resource type="Texture2D" uid="uid://bei0gi7nevot1" path="res://Sprites/DrChen/WalkRunJumpIdle.png" id="1_rln2h"]
 [ext_resource type="Texture2D" uid="uid://b63jmsx6edto7" path="res://Sprites/DrChen/walking.png" id="2_rl2i2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3bxm"]
-radius = 24.0
+radius = 34.0
 height = 80.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d0sh"]
@@ -261,17 +262,30 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr56c"]
+radius = 34.0
+height = 78.0
+
 [node name="DrChen" type="Node2D"]
+script = ExtResource("1_ldhka")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 
-[node name="CollisionShapeChen" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShapeChen" type="CollisionShape2D" parent="CharacterBody2D2"]
 position = Vector2(216, 206)
 shape = SubResource("CapsuleShape2D_q3bxm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CharacterBody2D2"]
 position = Vector2(217, 182)
 sprite_frames = SubResource("SpriteFrames_dc4py")
 animation = &"Idle"
 frame = 4
 frame_progress = 0.663751
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(216, 206)
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_tr56c")
