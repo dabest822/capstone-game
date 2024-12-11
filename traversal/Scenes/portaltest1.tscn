@@ -121,7 +121,7 @@ position = Vector2(883, 444)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_wuvm1")
 animation = &"portalidle"
-frame_progress = 0.803347
+frame_progress = 0.712036
 script = ExtResource("1_rksv3")
 
 [node name="Area2DPortal" type="Area2D" parent="."]
