@@ -10,6 +10,12 @@
 [sub_resource type="GDScript" id="GDScript_1ypoi"]
 script/source = "extends Button
 
+@onready var traversal_title = get_node(\"/root/Node2D/TraversalTitle\") # Correct path to the TraversalTitle node
+var float_direction = 1 # Direction of floating (1 for up, -1 for down)
+var float_speed = 15.0 # Speed of the floating effect
+var float_range = 10.0 # Maximum range of the floating effect
+var initial_position = Vector2()
+
 func _ready():
 	# Remove focus styling
 	focus_mode = Control.FOCUS_NONE
@@ -26,6 +32,10 @@ func _ready():
 	# Connect the pressed signal to our handler
 	pressed.connect(_on_pressed)
 
+	# Store the initial position of the title label
+	if traversal_title:
+		initial_position = traversal_title.position
+
 func _on_pressed():
 	# Check which button was pressed based on name
 	if name == \"Quit\":
@@ -35,6 +45,15 @@ func _on_pressed():
 	#     start_game()
 	# elif name == \"Options\":
 	#     show_options()
+
+func _process(delta):
+	# Apply floating effect to the title
+	if traversal_title:
+		traversal_title.position.y += float_speed * float_direction * delta
+		if traversal_title.position.y - initial_position.y > float_range:
+			float_direction = -1 # Reverse direction to go up
+		elif traversal_title.position.y - initial_position.y < -float_range:
+			float_direction = 1 # Reverse direction to go down
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eoq85"]

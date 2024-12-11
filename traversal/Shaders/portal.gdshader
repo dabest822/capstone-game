@@ -5,7 +5,7 @@ void fragment() {
     vec2 uv = UV - vec2(0.5);
     
     // Square aspect ratio adjustment
-    uv.x *= 1.45; // Adjust based on your needs
+    uv.x *= 1.6; // Adjust based on your needs
     
     // Blue part
     vec3 c1;
