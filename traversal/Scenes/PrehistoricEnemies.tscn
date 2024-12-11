@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://pjn8cso46stx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0ka0"]
+
+[node name="PrehistoricEnemiesList" type="Node2D"]
+
+[node name="Enemy1" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1"]
+sprite_frames = SubResource("SpriteFrames_x0ka0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1"]
+
+[node name="Area2D" type="Area2D" parent="Enemy1"]
+
+[node name="Timer" type="Timer" parent="Enemy1"]
