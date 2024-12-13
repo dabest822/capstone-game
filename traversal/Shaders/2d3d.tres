@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dt5d3nhef14an"]
+
+[ext_resource type="Shader" path="res://Shaders/2d3dtest.gdshader" id="1_n5ns4"]
+
+[resource]
+shader = ExtResource("1_n5ns4")
+shader_parameter/rotationAngle = null
+shader_parameter/isVertical = null
+shader_parameter/isLeftOrBottomLonger = null
+shader_parameter/viewPosition = null
+shader_parameter/thickness = 0.5
