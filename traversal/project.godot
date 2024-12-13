@@ -69,6 +69,11 @@ ui_shift={
 ]
 }
 
+[maaacks_options_menus]
+
+disable_plugin_dialogues=true
+copy_path="res://addons/maaacks_options_menus/examples/scenes/menus/options_menu"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

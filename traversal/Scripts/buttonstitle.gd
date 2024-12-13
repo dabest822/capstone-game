@@ -2,7 +2,7 @@ extends Button
 
 @onready var traversal_title = get_node("/root/Node2D/TraversalTitle") # Correct path to the TraversalTitle node
 var float_direction = 1 # Direction of floating (1 for up, -1 for down)
-var float_speed = 15.0 # Speed of the floating effect
+var float_speed = 10.0 # Speed of the floating effect
 var float_range = 10.0 # Maximum range of the floating effect
 var initial_position = Vector2()
 
@@ -36,7 +36,7 @@ func _on_pressed():
 		if camera:
 			camera.start_game()
 	elif name == "Options":
-		print("Options menu clicked") # Placeholder for options functionality
+		get_tree().change_scene_to_file("res://Scenes/Options.tscn")
 
 func _process(delta):
 	# Apply floating effect to the title

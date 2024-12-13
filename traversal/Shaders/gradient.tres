@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cbiwjljqxuqxe"]
+
+[ext_resource type="Shader" path="res://Shaders/optionscolor.gdshader" id="1_fgvva"]
+
+[resource]
+shader = ExtResource("1_fgvva")
+shader_parameter/direction = Vector2(10, 0)
+shader_parameter/start_color = Color(0.442273, 0.343143, 0.840231, 1)
+shader_parameter/end_color = Color(0.216302, 0.809165, 0, 1)
+shader_parameter/radius_scale = 0.1
+shader_parameter/rounded_corner_top_left = true
+shader_parameter/rounded_corner_top_right = true
+shader_parameter/rounded_corner_bottom_left = true
+shader_parameter/rounded_corner_bottom_right = true
+shader_parameter/width = 1000.0
+shader_parameter/height = 300.0

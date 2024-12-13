@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bc7thnnvcvbqu"]
+
+[ext_resource type="Shader" path="res://Shaders/corners.gdshader" id="1_p5e67"]
+
+[resource]
+shader = ExtResource("1_p5e67")
+shader_parameter/radius_scale = 0.1
+shader_parameter/rounded_corner_top_left = true
+shader_parameter/rounded_corner_top_right = true
+shader_parameter/rounded_corner_bottom_left = true
+shader_parameter/rounded_corner_bottom_right = true
+shader_parameter/width = 300.0
+shader_parameter/height = 90.0
