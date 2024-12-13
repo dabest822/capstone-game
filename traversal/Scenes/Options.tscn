@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c5x54ixudiqko"]
+[gd_scene load_steps=40 format=3 uid="uid://c5x54ixudiqko"]
 
 [ext_resource type="Material" uid="uid://bbwxg3s0b4s0" path="res://Shaders/optionsBG.tres" id="1_35quk"]
 [ext_resource type="Script" path="res://Scripts/optionsstuff.gd" id="1_pxnq4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://bgrvsqjoobba2" path="res://Themes/arrow.tres" id="6_0m3mu"]
 [ext_resource type="Texture2D" uid="uid://cfqlnbbjoet8g" path="res://Sprites/Arrow.png" id="7_i5ghs"]
 [ext_resource type="Material" uid="uid://bc7thnnvcvbqu" path="res://Shaders/roundedcorners.tres" id="8_5m8ym"]
+[ext_resource type="AudioStream" uid="uid://biwbve8sh6j2s" path="res://Music/Options.mp3" id="10_1i7hh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uoqji"]
 atlas = ExtResource("4_w28rf")
@@ -375,3 +376,8 @@ scale = Vector2(0.3, 0.3)
 theme_override_fonts/normal_font = ExtResource("2_tt0k6")
 theme_override_font_sizes/normal_font_size = 300
 text = "Options"
+
+[node name="OptionsTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_1i7hh")
+volume_db = -20.0
+parameters/looping = true

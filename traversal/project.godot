@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
+[autoload]
+
+GlobalSettings="*res://Scripts/GlobalSettings.gd"
+
 [display]
 
 window/stretch/mode="viewport"

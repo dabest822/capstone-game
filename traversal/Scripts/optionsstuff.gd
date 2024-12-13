@@ -5,6 +5,7 @@ extends Control
 @onready var fullscreen_sprite = $CheckMark
 @onready var fullscreen_button = $CheckMark/CheckMarkBG/FullscreenButton
 @onready var resolution_menu = $ResolutionMenu
+@onready var options_theme = $OptionsTheme  # Reference to the AudioStreamPlayer
 @onready var custom_font = preload("res://Fonts/Cubic_11_1.013_R.ttf")
 
 var is_fullscreen = false
@@ -13,17 +14,22 @@ var debug_timer = 0.0  # Timer to track debug message intervals
 var debug_interval = 5.0  # Interval in seconds for debug messages
 
 func _ready():
+	if options_theme:
+		options_theme.play()  # Start playing the music
+		print("Options theme music started.")
+	
 	if back_button:
+		back_button.pressed.connect(_on_back_pressed)
 		style_back_button(back_button)
 	configure_volume_slider(volume_slider)
 	configure_arrow(resolution_menu)
 	if resolution_menu:
 		resolution_menu.item_selected.connect(_on_resolution_selected)
 	configure_fullscreen()
-	update_fullscreen_state()  # Ensure the check mark matches the fullscreen state on startup
-	set_process(true)
-	if back_button:
-		back_button.pressed.connect(_on_back_pressed)
+	update_fullscreen_state()
+
+	# Load the saved volume setting
+	volume_slider.value = GlobalSettings.volume_value  # Set slider value
 
 func _process(delta):
 	debug_timer += delta
@@ -174,8 +180,13 @@ func toggle_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_volume_changed(value):
-	print("Volume changed to:", value)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+	# Map slider value to a decibel range (-40 to 0 dB)
+	var db_value = lerp(-40, 0, value / 100.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db_value)
+	
+	# Save the new volume value globally
+	GlobalSettings.volume_value = value
+	GlobalSettings.save_settings()
 
 func _on_back_pressed():
 	print("Back button pressed. Returning to titlescreen...")
