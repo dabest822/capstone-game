@@ -351,7 +351,6 @@ animations = [{
 script = ExtResource("1_fo3yk")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-visible = false
 z_index = 1
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_w2ho3")

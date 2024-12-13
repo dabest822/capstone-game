@@ -1,14 +1,15 @@
-[gd_scene load_steps=69 format=4 uid="uid://xv45gf131qvb"]
+[gd_scene load_steps=68 format=3 uid="uid://xv45gf131qvb"]
 
 [ext_resource type="Texture2D" uid="uid://cl08kotd83dia" path="res://Lab/maintower.png" id="1_2hl51"]
-[ext_resource type="Texture2D" uid="uid://c33v1b2xcns84" path="res://sky.png" id="1_ajxtu"]
-[ext_resource type="Script" path="res://Scripts/markhazard3d.gd" id="2_lib8b"]
+[ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://2d3dsecond.tres" id="1_4ukqo"]
+[ext_resource type="Texture2D" uid="uid://c33v1b2xcns84" path="res://Sprites/sky.png" id="1_ajxtu"]
 [ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="3_rhgwy"]
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="4_ghe1h"]
+[ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="4_vnk8f"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="5_tx8eo"]
 [ext_resource type="Material" uid="uid://dt5d3nhef14an" path="res://Shaders/2d3d.tres" id="6_rdsad"]
 [ext_resource type="Texture2D" uid="uid://c8tmp1oujpg7k" path="res://Textures/wall.png" id="7_unw8f"]
-[ext_resource type="Texture2D" uid="uid://bycxwn0l78dni" path="res://Floor.png" id="9_kt787"]
+[ext_resource type="Texture2D" uid="uid://bslud0mr6onjo" path="res://Sprites/Floor.png" id="9_kt787"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jaqt"]
 atlas = ExtResource("1_ajxtu")
@@ -419,15 +420,14 @@ polygon = PackedVector2Array(-638.284, -86.4543, -624.246, -64.2076, -659.751, -
 radius = 29.0
 height = 142.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3of6"]
-texture = ExtResource("9_kt787")
-texture_region_size = Vector2i(600, 350)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_yo4ro"]
-sources/1 = SubResource("TileSetAtlasSource_m3of6")
-
 [node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="Sprite2D" parent="."]
+physics_interpolation_mode = 2
+material = ExtResource("1_4ukqo")
+position = Vector2(391, 516)
+scale = Vector2(0.4, 0.401)
+texture = ExtResource("9_kt787")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -465,8 +465,6 @@ frame_progress = 0.814764
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-
 [node name="EnvironmentAnims" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o61qb")
 
@@ -478,14 +476,13 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_2hl51")
 
 [node name="CharacterBody2D1" type="CharacterBody2D" parent="."]
-visible = false
 z_index = 1
 collision_mask = 2
-script = ExtResource("2_lib8b")
+script = ExtResource("4_vnk8f")
 
 [node name="SpriteContainer" type="Node2D" parent="CharacterBody2D1"]
 z_index = 1
-position = Vector2(386, 514)
+position = Vector2(374, 471)
 
 [node name="AnimatedSprite2D1" type="AnimatedSprite2D" parent="CharacterBody2D1/SpriteContainer"]
 material = ExtResource("3_rhgwy")
@@ -499,7 +496,7 @@ skew = 0.0174533
 occluder = SubResource("OccluderPolygon2D_rsklc")
 
 [node name="CollisionShapeMark" type="CollisionShape2D" parent="CharacterBody2D1"]
-position = Vector2(389, 522)
+position = Vector2(375, 480)
 shape = SubResource("CapsuleShape2D_gfa2x")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D1"]
@@ -522,10 +519,3 @@ scale = Vector2(0.481481, 2.48571)
 texture = ExtResource("7_unw8f")
 polygon = PackedVector2Array(105, 62, 80, 90, 78, 237, 104, 206)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
-
-[node name="Floor" type="TileMapLayer" parent="."]
-material = ExtResource("6_rdsad")
-position = Vector2(291.509, 609.089)
-scale = Vector2(0.4, 0.401)
-tile_map_data = PackedByteArray("AAAHAAIAAQAAAAAAAAARAPr/AQAAAAAAAAATAO//AQAAAAAAAAAUAOj/AQAAAAAAAAATAOP/AQAAAAAAAAAXAOL/AQAAAAAAAAAKAP3/AQAAAAAAAAARAAMAAQAAAAAAAAAUAN3/AQAAAAAAAAAVANb/AQAAAAAAAAAdAM//AQAAAAAAAAAlAMn/AQAAAAAAAAAwAML/AQAAAAAAAAA7AMH/AQAAAAAAAABDAL7/AQAAAAAAAABNALv/AQAAAAAAAABYAL7/AQAAAAAAAAA=")
-tile_set = SubResource("TileSet_yo4ro")

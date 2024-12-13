@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var walk_speed: float = 200.0  # Speed for walking
 @export var run_speed: float = 400.0  # Speed for running
-@onready var animated_sprite = $SpriteContainer/AnimatedSprite2D3D  # Correct node name
+@onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1  # Correct node name
 
 enum MovementState { IDLE, WALK, RUN }
 var movement_state = MovementState.IDLE
