@@ -1,8 +1,9 @@
-[gd_scene load_steps=68 format=3 uid="uid://xv45gf131qvb"]
+[gd_scene load_steps=69 format=3 uid="uid://xv45gf131qvb"]
 
 [ext_resource type="Texture2D" uid="uid://cl08kotd83dia" path="res://Lab/maintower.png" id="1_2hl51"]
 [ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://2d3dsecond.tres" id="1_4ukqo"]
 [ext_resource type="Texture2D" uid="uid://c33v1b2xcns84" path="res://Sprites/sky.png" id="1_ajxtu"]
+[ext_resource type="Script" path="res://Scenes/tilemappath.gd" id="3_5pm4g"]
 [ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="3_rhgwy"]
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="4_ghe1h"]
 [ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="4_vnk8f"]
@@ -422,10 +423,51 @@ height = 142.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Floor" type="Sprite2D" parent="."]
+[node name="PathSegments" type="Node2D" parent="."]
+script = ExtResource("3_5pm4g")
+
+[node name="Floor" type="Sprite2D" parent="PathSegments"]
 physics_interpolation_mode = 2
 material = ExtResource("1_4ukqo")
-position = Vector2(391, 516)
+position = Vector2(414, 599)
+scale = Vector2(0.4, 0.401)
+texture = ExtResource("9_kt787")
+
+[node name="Floor2" type="Sprite2D" parent="PathSegments"]
+physics_interpolation_mode = 2
+material = ExtResource("1_4ukqo")
+position = Vector2(414, 575)
+scale = Vector2(0.0933333, 0.0991772)
+texture = ExtResource("9_kt787")
+
+[node name="Floor3" type="Sprite2D" parent="PathSegments"]
+physics_interpolation_mode = 2
+material = ExtResource("1_4ukqo")
+position = Vector2(414, 569)
+scale = Vector2(0.0218749, 0.0213826)
+texture = ExtResource("9_kt787")
+
+[node name="Floor4" type="Sprite2D" parent="PathSegments"]
+physics_interpolation_mode = 2
+visible = false
+material = ExtResource("1_4ukqo")
+position = Vector2(421, 414)
+scale = Vector2(0.4, 0.401)
+texture = ExtResource("9_kt787")
+
+[node name="Floor5" type="Sprite2D" parent="PathSegments"]
+physics_interpolation_mode = 2
+visible = false
+material = ExtResource("1_4ukqo")
+position = Vector2(422, 353)
+scale = Vector2(0.4, 0.401)
+texture = ExtResource("9_kt787")
+
+[node name="Floor6" type="Sprite2D" parent="PathSegments"]
+physics_interpolation_mode = 2
+visible = false
+material = ExtResource("1_4ukqo")
+position = Vector2(422, 292)
 scale = Vector2(0.4, 0.401)
 texture = ExtResource("9_kt787")
 
@@ -482,7 +524,7 @@ script = ExtResource("4_vnk8f")
 
 [node name="SpriteContainer" type="Node2D" parent="CharacterBody2D1"]
 z_index = 1
-position = Vector2(374, 471)
+position = Vector2(408, 565)
 
 [node name="AnimatedSprite2D1" type="AnimatedSprite2D" parent="CharacterBody2D1/SpriteContainer"]
 material = ExtResource("3_rhgwy")
@@ -496,13 +538,14 @@ skew = 0.0174533
 occluder = SubResource("OccluderPolygon2D_rsklc")
 
 [node name="CollisionShapeMark" type="CollisionShape2D" parent="CharacterBody2D1"]
-position = Vector2(375, 480)
+position = Vector2(410, 573)
 shape = SubResource("CapsuleShape2D_gfa2x")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D1"]
 position = Vector2(576, 324)
 
 [node name="RightWall" type="Polygon2D" parent="."]
+visible = false
 z_index = 1
 material = ExtResource("6_rdsad")
 position = Vector2(467.444, 21.8857)
@@ -512,6 +555,7 @@ polygon = PackedVector2Array(105, 62, 80, 90, 78, 237, 104, 206)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
 
 [node name="LeftWall" type="Polygon2D" parent="."]
+visible = false
 z_index = 1
 material = ExtResource("6_rdsad")
 position = Vector2(251, 15)

@@ -5,9 +5,9 @@
 [resource]
 shader = ExtResource("1_h55u8")
 shader_parameter/rotationAngle = 45.0
-shader_parameter/isVertical = null
-shader_parameter/isLeftOrBottomLonger = null
+shader_parameter/isVertical = false
+shader_parameter/isLeftOrBottomLonger = false
 shader_parameter/viewPosition = null
 shader_parameter/thickness = 2.0
-shader_parameter/scroll_speed = Vector2(0, -1)
+shader_parameter/scroll_speed = Vector2(0, -0.5)
 shader_parameter/time_multiplier = 1.0
