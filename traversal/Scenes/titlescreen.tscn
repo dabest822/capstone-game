@@ -36,6 +36,14 @@ theme_override_fonts/font = ExtResource("1_cxl8y")
 theme_override_font_sizes/font_size = 150
 text = "Wynn © 2024"
 
+[node name="EarthZoom" parent="." instance=ExtResource("6_hrj4x")]
+
+[node name="Earth" parent="EarthZoom" index="1"]
+offset_left = 715.0
+offset_top = 281.0
+offset_right = 915.0
+offset_bottom = 481.0
+
 [node name="Play" type="Button" parent="."]
 offset_left = 166.0
 offset_top = 379.0
@@ -78,13 +86,5 @@ script = ExtResource("4_m437r")
 [node name="ShaderDisplay" parent="." instance=ExtResource("5_1fqgp")]
 layer = -1
 
-[node name="EarthZoom" parent="." instance=ExtResource("6_hrj4x")]
-
-[node name="Earth" parent="EarthZoom" index="1"]
-offset_left = 715.0
-offset_top = 281.0
-offset_right = 915.0
-offset_bottom = 481.0
-
-[editable path="ShaderDisplay"]
 [editable path="EarthZoom"]
+[editable path="ShaderDisplay"]

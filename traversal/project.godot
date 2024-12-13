@@ -13,7 +13,6 @@ config_version=5
 config/name="Simple Template Main Menu"
 run/main_scene="res://Intro Sequence/pixel_splash.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [audio]
 

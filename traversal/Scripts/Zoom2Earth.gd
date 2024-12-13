@@ -14,6 +14,7 @@ var slowing_elapsed = 0.0
 var rotation_speed_initial = 0.01 # Default initial rotation speed
 var rotation_speed_target = 0.0 # Final rotation speed
 var rotation_y_angle = 30.0 # Keep track of Earth's rotation in degrees
+var scene_to_load = "res://Scenes/IntroScene.tscn" # Path to the scene to load
 
 func _ready():
 	# Set the initial camera position and zoom level
@@ -43,6 +44,7 @@ func _process(delta):
 
 		if zoom_elapsed >= zoom_duration:
 			zooming = false  # Stop zooming after duration completes
+			check_transition()
 
 	# Handle slowing down the Earth's rotation
 	if slowing_down and earth_shader:
@@ -61,16 +63,28 @@ func _process(delta):
 		if slowing_elapsed >= slowing_duration:
 			earth_shader.set_shader_parameter("rotation_speed", rotation_speed_target)
 			slowing_down = false  # Stop slowing down after duration completes
+			check_transition()
+
+func check_transition():
+	# Check if both zooming and slowing down are complete
+	if not zooming and not slowing_down:
+		if get_tree() != null: # Ensure the SceneTree is valid
+			get_tree().change_scene_to_file(scene_to_load) # Change to the IntroScene
+		else:
+			print("Error: Unable to access SceneTree.")
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"): # Trigger with space bar
-		# Start both zooming and slowing rotation simultaneously
-		zooming = true
-		zoom_elapsed = 0.0 # Reset zoom timer
-		slowing_down = true
-		slowing_elapsed = 0.0 # Reset slowdown timer
-		focus_on_point(Vector2(830, 320), Vector2(7, 7)) # Target zoom-in parameters
-	if event.is_action_pressed("Enter"): # Trigger with Enter to reset
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Check if the mouse click is on the "Play" button
+		var play_button = get_node("../../Play")
+		if play_button and play_button.get_global_rect().has_point(event.global_position):
+			# Start both zooming and slowing rotation simultaneously
+			zooming = true
+			zoom_elapsed = 0.0 # Reset zoom timer
+			slowing_down = true
+			slowing_elapsed = 0.0 # Reset slowdown timer
+			focus_on_point(Vector2(830, 320), Vector2(7, 7)) # Target zoom-in parameters
+	elif event.is_action_pressed("ui_accept"): # Reset when pressing "Enter"
 		reset_view()
 
 func focus_on_point(world_point: Vector2, zoom_level: Vector2):
@@ -91,3 +105,11 @@ func reset_view():
 		slowing_down = false  # Stop any ongoing slowdown
 		slowing_elapsed = 0.0
 		rotation_y_angle = 30.0
+
+func start_game():
+	# Start both zooming and slowing rotation simultaneously
+	zooming = true
+	zoom_elapsed = 0.0 # Reset zoom timer
+	slowing_down = true
+	slowing_elapsed = 0.0 # Reset slowdown timer
+	focus_on_point(Vector2(830, 320), Vector2(7, 7)) # Target zoom-in parameters

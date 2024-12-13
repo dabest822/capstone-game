@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://c5x54ixudiqko"]
+[gd_scene load_steps=2 format=3 uid="uid://c5x54ixudiqko"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Material" uid="uid://bbwxg3s0b4s0" path="res://Shaders/optionsBG.tres" id="1_35quk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("1_35quk")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
