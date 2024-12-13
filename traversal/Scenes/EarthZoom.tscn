@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0kx8hah75lxj"]
+
+[ext_resource type="Script" path="res://Scripts/Zoom2Earth.gd" id="1_3qqqk"]
+[ext_resource type="Material" uid="uid://b2q3ws6sygdbq" path="res://Shaders/Earth.tres" id="1_qhxm0"]
+
+[node name="EarthZoom" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 325)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("1_3qqqk")
+
+[node name="Earth" type="ColorRect" parent="."]
+material = ExtResource("1_qhxm0")
+offset_left = 728.0
+offset_top = 275.0
+offset_right = 892.0
+offset_bottom = 439.0

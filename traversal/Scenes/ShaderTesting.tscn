@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0ahmi5ugpah5"]
+
+[ext_resource type="Script" path="res://Scripts/EnterWater.gd" id="1_0gqlv"]
+[ext_resource type="Material" uid="uid://bqj1hae506ee3" path="res://Water/water1.tres" id="2_3p88o"]
+[ext_resource type="Texture2D" uid="uid://d7e4pp0x1bug" path="res://Water/SNES - Super Mario World - Cookie Mountain Sub Area - Scrolling Water Overlay.png" id="3_ppwo7"]
+[ext_resource type="Material" uid="uid://cy6tpjl6ayj1j" path="res://Water/water2.tres" id="4_x1p1w"]
+[ext_resource type="Material" uid="uid://bpcal0doyx1ui" path="res://Water/water3.tres" id="5_pv5jn"]
+[ext_resource type="Material" uid="uid://c7evcysg2suhc" path="res://Shaders/godrays.tres" id="6_03wcs"]
+[ext_resource type="Script" path="res://Scripts/godrays.gd" id="7_6n6li"]
+[ext_resource type="Material" uid="uid://b2q3ws6sygdbq" path="res://Shaders/Earth.tres" id="8_daoij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07jhy"]
+size = Vector2(1023, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwil"]
+size = Vector2(1024, 49)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_phy7r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dd42w"]
+seamless = true
+noise = SubResource("FastNoiseLite_phy7r")
+
+[node name="ShaderTesting" type="Node2D"]
+script = ExtResource("1_0gqlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_3p88o")
+position = Vector2(170.6, 332.8)
+texture = ExtResource("3_ppwo7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(170, 225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_07jhy")
+
+[node name="WaterInteraction" type="Area2D" parent="."]
+position = Vector2(170, 225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterInteraction"]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_6kwil")
+
+[node name="Water2" type="Sprite2D" parent="."]
+material = ExtResource("4_x1p1w")
+position = Vector2(458.5, 82.0171)
+scale = Vector2(0.525391, 0.320379)
+texture = SubResource("NoiseTexture2D_dd42w")
+
+[node name="Water3" type="ColorRect" parent="."]
+material = ExtResource("5_pv5jn")
+offset_left = 410.0
+offset_top = 317.0
+offset_right = 734.0
+offset_bottom = 427.0
+
+[node name="GodRays" type="ColorRect" parent="."]
+material = ExtResource("6_03wcs")
+offset_left = 844.0
+offset_top = 113.0
+offset_right = 1140.0
+offset_bottom = 270.0
+script = ExtResource("7_6n6li")
+
+[node name="Earth" type="ColorRect" parent="."]
+material = ExtResource("8_daoij")
+offset_left = 889.0
+offset_top = 375.0
+offset_right = 1053.0
+offset_bottom = 539.0
