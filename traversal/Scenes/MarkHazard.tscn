@@ -1,64 +1,11 @@
 [gd_scene load_steps=55 format=3 uid="uid://bsnmdmw02ntpc"]
 
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
+[ext_resource type="Script" path="res://Scripts/markhazard.gd" id="1_hj6as"]
 [ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="2_pqvja"]
 [ext_resource type="Texture2D" uid="uid://dahnxi5hvrhmy" path="res://Platforms/testplatform.png" id="3_3sjy4"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="3_hfyyh"]
 [ext_resource type="PackedScene" uid="uid://clc20cl68j84w" path="res://Scenes/DrChen.tscn" id="5_amggi"]
-
-[sub_resource type="GDScript" id="GDScript_ryj50"]
-script/source = "extends CharacterBody2D
-
-const SPEED = 250.0
-const RUN_SPEED = 500.0
-const JUMP_VELOCITY = -500.0
-
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-@onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
-
-func _physics_process(delta):
-	# Add gravity
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle Jump
-	if is_on_floor() and Input.is_action_just_pressed(\"ui_up\"):
-		velocity.y = JUMP_VELOCITY
-		animated_sprite.play(\"JumpStraight\")
-
-	# Handle movement input
-	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
-	if direction != 0:
-		if Input.is_action_pressed(\"ui_shift\"):
-			velocity.x = direction * RUN_SPEED
-			if is_on_floor():
-				animated_sprite.play(\"Run\")
-		else:
-			velocity.x = direction * SPEED
-			if is_on_floor():
-				animated_sprite.play(\"Walk\")
-
-		# Flip the sprite based on direction
-		animated_sprite.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if is_on_floor():
-			if animated_sprite.flip_h:
-				animated_sprite.play(\"Idle2\") # Play Idle2 if facing left
-			else:
-				animated_sprite.play(\"Idle\") # Play Idle if facing right
-
-	# Handle airborne animation
-	if not is_on_floor() and velocity.y < 0:
-		animated_sprite.play(\"JumpStraight\")
-
-	move_and_slide()
-
-# Handle portal interaction
-func _on_area_2d_portal_body_entered(body):
-	if body == self:
-		get_tree().quit()  # Close the game when entering portal
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cm4b7"]
 atlas = ExtResource("1_08u8n")
@@ -411,7 +358,7 @@ size = Vector2(1112, 49)
 [node name="CharacterBody2D1" type="CharacterBody2D" parent="."]
 z_index = 1
 collision_mask = 2
-script = SubResource("GDScript_ryj50")
+script = ExtResource("1_hj6as")
 
 [node name="SpriteContainer" type="Node2D" parent="CharacterBody2D1"]
 z_index = 1

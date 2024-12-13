@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqj1hae506ee3"]
+
+[ext_resource type="Shader" path="res://Water/water1.gdshader" id="1_u2muw"]
+
+[resource]
+shader = ExtResource("1_u2muw")
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/amplitude = 0.02

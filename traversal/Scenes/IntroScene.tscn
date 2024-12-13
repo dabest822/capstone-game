@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://xv45gf131qvb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o61qb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EnvironmentAnims" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o61qb")
+
+[node name="LabBuilding" type="Sprite2D" parent="."]
