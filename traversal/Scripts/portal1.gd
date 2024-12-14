@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 @onready var portal_area = $"../Area2DPortal"
 @onready var shader_display = $"../../ShaderDisplay"
+var is_transitioning: bool = false
 
 func _ready():
 	setup_portal()
@@ -15,6 +16,7 @@ func _ready():
 
 func _on_player_entered(body):
 	if body is CharacterBody2D:
+		print("Starting transition sequence...")
 		if get_node("/root/TransitionManager"):  # Check if TransitionManager exists
 			get_node("/root/TransitionManager").transition_to_scene("res://Scenes/PrehistoricEra.tscn")
 		else:

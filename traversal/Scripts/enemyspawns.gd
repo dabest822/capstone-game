@@ -1,6 +1,5 @@
 extends Node2D
 
-# Preload enemy scenes
 @export var pterodactyl_scene: PackedScene
 @export var spawn_interval: float = 5.0
 @export var max_enemies: int = 3
@@ -19,20 +18,15 @@ func _ready():
 	spawn_timer.start()
 
 func _on_spawn_timer_timeout():
-	if get_tree().get_nodes_in_group("enemies").size() < max_enemies:
+	if get_tree().get_nodes_in_group("flying_enemies").size() < max_enemies:
 		spawn_pterodactyl()
-
-func get_random_spawn_position() -> Vector2:
-	# Spawn in top third of screen
-	var x = randf_range(100, viewport_size.x - 100)
-	var y = randf_range(50, viewport_size.y / 3)
-	return Vector2(x, y)
 
 func spawn_pterodactyl():
 	var pterodactyl = pterodactyl_scene.instantiate()
 	add_child(pterodactyl)
-	pterodactyl.add_to_group("enemies")
+	pterodactyl.add_to_group("flying_enemies")
 	
-	# Set initial position
-	var spawn_pos = get_random_spawn_position()
-	pterodactyl.global_position = spawn_pos
+	# Spawn in top third of screen
+	var spawn_x = randf_range(100, viewport_size.x - 100)
+	var spawn_y = randf_range(50, viewport_size.y / 3)
+	pterodactyl.global_position = Vector2(spawn_x, spawn_y)

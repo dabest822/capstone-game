@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bvffmhqcbdgkg"]
+[gd_scene load_steps=57 format=3 uid="uid://bvffmhqcbdgkg"]
 
 [ext_resource type="AudioStream" uid="uid://ddl3l1nvo7avx" path="res://Music/A Prehistoric Tale.mp3" id="1_frl6e"]
 [ext_resource type="PackedScene" uid="uid://pjn8cso46stx" path="res://Scenes/PrehistoricEnemies.tscn" id="2_q6ryx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="5_0neky"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="6_ur2b8"]
 [ext_resource type="PackedScene" uid="uid://c260j13w342s1" path="res://Scenes/GUIforplayer.tscn" id="9_l2fg7"]
-[ext_resource type="Script" path="res://Scripts/enemyspawns.gd" id="10_hc7r6"]
 [ext_resource type="PackedScene" uid="uid://w7bbtfkl36gt" path="res://Scenes/testingshader.tscn" id="10_qprvp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cm4b7"]
@@ -394,12 +393,6 @@ shape = SubResource("CapsuleShape2D_no086")
 
 [node name="MainGUI" parent="." instance=ExtResource("9_l2fg7")]
 
-[node name="CooldownCircle" parent="MainGUI/GUIRoot/MarginContainer/TopBar/AbilityDisplay" index="0"]
-offset_left = -72.0
-offset_top = 95.0
-offset_right = -32.0
-offset_bottom = 135.0
-
 [node name="PrehistoricEnemiesList" parent="." instance=ExtResource("2_q6ryx")]
 
 [node name="AngryPlant" parent="PrehistoricEnemiesList" index="0"]
@@ -422,10 +415,6 @@ visible = false
 
 [node name="ShaderDisplay" parent="." instance=ExtResource("10_qprvp")]
 visible = false
-
-[node name="EnemySpawner" type="Node2D" parent="."]
-script = ExtResource("10_hc7r6")
-pterodactyl_scene = ExtResource("2_q6ryx")
 
 [editable path="Portal"]
 [editable path="MainGUI"]
