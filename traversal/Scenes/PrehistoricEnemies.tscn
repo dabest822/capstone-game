@@ -922,17 +922,17 @@ shape = SubResource("RectangleShape2D_0b4db")
 [node name="Megalodon" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Megalodon"]
-position = Vector2(720, 373)
+position = Vector2(906, 223)
 sprite_frames = SubResource("SpriteFrames_pgl0a")
 animation = &"Swimming2"
 frame_progress = 0.330864
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Megalodon"]
-position = Vector2(721.5, 378.5)
+position = Vector2(908, 227.5)
 shape = SubResource("RectangleShape2D_jgi56")
 
 [node name="Area2D" type="Area2D" parent="Megalodon"]
-position = Vector2(723, 375)
+position = Vector2(909.5, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Megalodon/Area2D"]
 position = Vector2(-2, 4)
@@ -947,10 +947,10 @@ position = Vector2(716, 215)
 sprite_frames = SubResource("SpriteFrames_rjdev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossBioApe (Maybe)"]
-position = Vector2(923, 220)
+position = Vector2(1053, 220)
 
 [node name="Area2D" type="Area2D" parent="BossBioApe (Maybe)"]
-position = Vector2(932, 221)
+position = Vector2(1062, 221)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossBioApe (Maybe)/Area2D"]
 position = Vector2(-13.5, -1)

@@ -545,21 +545,19 @@ shape = SubResource("CapsuleShape2D_gfa2x")
 position = Vector2(576, 324)
 
 [node name="RightWall" type="Polygon2D" parent="."]
-visible = false
 z_index = 1
 material = ExtResource("6_rdsad")
-position = Vector2(467.444, 21.8857)
-scale = Vector2(0.481481, 2.48571)
+position = Vector2(177.042, 400.245)
+scale = Vector2(3.6523, 1.03808)
 texture = ExtResource("7_unw8f")
-polygon = PackedVector2Array(105, 62, 80, 90, 78, 237, 104, 206)
+polygon = PackedVector2Array(99.3779, 144.261, 81.8547, 114.398, 82.1285, 202.06, 98.0089, 238.665)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
 
 [node name="LeftWall" type="Polygon2D" parent="."]
-visible = false
 z_index = 1
 material = ExtResource("6_rdsad")
-position = Vector2(251, 15)
-scale = Vector2(0.481481, 2.48571)
+position = Vector2(266, 198)
+scale = Vector2(0.362698, 1.89869)
 texture = ExtResource("7_unw8f")
-polygon = PackedVector2Array(105, 62, 80, 90, 78, 237, 104, 206)
+polygon = PackedVector2Array(203.19, 167.357, 43.1342, 181.839, 78, 237, 228.841, 218.046)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)

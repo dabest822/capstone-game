@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_4spvv")
-shader_parameter/rotationAngle = 45.0
+shader_parameter/rotationAngle = 0.0
 shader_parameter/isVertical = false
 shader_parameter/isLeftOrBottomLonger = false
 shader_parameter/viewPosition = Vector2(0, 0)
