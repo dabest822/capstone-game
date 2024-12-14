@@ -4,11 +4,18 @@ extends CanvasLayer
 @export var fade_time: float = 1.0
 
 func _ready():
-	# When loading PrehistoricEra directly, just hide the shader
-	visible = false
-	$ColorRect.visible = false
+	# Check if we're in the titlescreen scene using the explicit path
+	var root = get_tree().get_current_scene()
+	if root and get_tree().current_scene == load("res://Scenes/titlescreen.tscn"):
+		print("On titlescreen. Shader displayed.")
+		visible = true
+		$ColorRect.visible = true
+	else:
+		print("Not on titlescreen. Shader hidden.")
+		visible = false
+		$ColorRect.visible = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		queue_free()
 

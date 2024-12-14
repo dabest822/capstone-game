@@ -16,6 +16,9 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="ShaderDisplay" parent="." instance=ExtResource("5_1fqgp")]
+layer = -1
+
 [node name="TraversalTitle" type="Label" parent="."]
 z_index = 3
 offset_left = 186.0
@@ -95,13 +98,10 @@ text = "OPTIONS"
 flat = true
 script = ExtResource("4_m437r")
 
-[node name="ShaderDisplay" parent="." instance=ExtResource("5_1fqgp")]
-layer = -1
-
 [node name="TitleTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_j0f8o")
 volume_db = -10.0
 parameters/looping = true
 
-[editable path="EarthZoom"]
 [editable path="ShaderDisplay"]
+[editable path="EarthZoom"]

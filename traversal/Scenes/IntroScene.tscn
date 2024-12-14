@@ -494,3 +494,8 @@ scale = Vector2(0.362698, 1.89869)
 texture = ExtResource("7_unw8f")
 polygon = PackedVector2Array(203.19, 167.357, 43.1342, 181.839, 78, 237, 228.841, 218.046)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
+
+[node name="Ceiling" type="Polygon2D" parent="."]
+material = ExtResource("6_rdsad")
+position = Vector2(459, 102)
+polygon = PackedVector2Array(-115, 340, -34, 340, -34, 277, -114, 277)
