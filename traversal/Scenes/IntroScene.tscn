@@ -1,11 +1,10 @@
-[gd_scene load_steps=71 format=3 uid="uid://xv45gf131qvb"]
+[gd_scene load_steps=62 format=3 uid="uid://xv45gf131qvb"]
 
 [ext_resource type="Texture2D" uid="uid://cl08kotd83dia" path="res://Lab/maintower.png" id="1_2hl51"]
 [ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://Shaders/2d3dsecond.tres" id="1_4ukqo"]
-[ext_resource type="Texture2D" uid="uid://c33v1b2xcns84" path="res://Sprites/sky.png" id="1_ajxtu"]
 [ext_resource type="Script" path="res://Scripts/tilemappath.gd" id="3_5pm4g"]
 [ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="3_rhgwy"]
-[ext_resource type="Material" uid="uid://bjy6geoeje0yl" path="res://Raining.tres" id="4_4gsyt"]
+[ext_resource type="Material" uid="uid://bjy6geoeje0yl" path="res://Shaders/Raining.tres" id="4_4gsyt"]
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="4_ghe1h"]
 [ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="4_vnk8f"]
 [ext_resource type="Texture2D" uid="uid://byfcamhsxvejd" path="res://Lab/lablab.png" id="5_h0aej"]
@@ -14,69 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c8tmp1oujpg7k" path="res://Textures/wall.png" id="7_unw8f"]
 [ext_resource type="Texture2D" uid="uid://bslud0mr6onjo" path="res://Sprites/Floor.png" id="9_kt787"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jaqt"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 1, 516, 178)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8upi"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 182, 516, 178)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2gd7"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 363, 516, 178)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4842g"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 545, 516, 177)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fi3e5"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 723, 516, 177)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1x1a"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 900, 516, 177)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12nh8"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 1077, 516, 177)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjhe4"]
-atlas = ExtResource("1_ajxtu")
-region = Rect2(0, 1255, 516, 176)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_aervo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jaqt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b8upi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b2gd7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4842g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fi3e5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h1x1a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12nh8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bjhe4")
-}],
-"loop": true,
-"name": &"Sky",
-"speed": 7.0
-}]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbed1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o61qb"]
 
@@ -475,37 +412,33 @@ texture = ExtResource("9_kt787")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.75, 0.75)
+[node name="LabHQ" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Foreground"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Building" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -1)
-motion_scale = Vector2(0.5, 0.5)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Building"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LabHQ"]
 material = ExtResource("4_4gsyt")
 offset_right = 1157.0
 offset_bottom = 230.0
 texture = ExtResource("5_h0aej")
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
+[node name="IDK" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -1
-motion_scale = Vector2(0.25, 0.25)
+position = Vector2(886, 427)
+motion_scale = Vector2(0.5, 0.5)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Sky"]
-visible = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/IDK"]
 modulate = Color(1, 1, 1, 0.882353)
 position = Vector2(577, 198)
 scale = Vector2(2.3, 2.3)
-sprite_frames = SubResource("SpriteFrames_aervo")
-animation = &"Sky"
-frame = 5
-frame_progress = 0.814764
+sprite_frames = SubResource("SpriteFrames_xbed1")
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(177, 416)
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Foreground"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
