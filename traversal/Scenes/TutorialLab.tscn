@@ -1,8 +1,9 @@
-[gd_scene load_steps=53 format=4 uid="uid://d2j543kuppuih"]
+[gd_scene load_steps=54 format=4 uid="uid://d2j543kuppuih"]
 
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_514bb"]
 [ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="1_w2ho3"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="2_1l5g8"]
+[ext_resource type="AudioStream" uid="uid://b2fq7mu7q7ceb" path="res://Music/Lab Theme.mp3" id="4_yld62"]
 [ext_resource type="PackedScene" uid="uid://c8qvxvjp46sdu" path="res://Scenes/portaltest1.tscn" id="5_m3fgr"]
 [ext_resource type="PackedScene" uid="uid://w7bbtfkl36gt" path="res://Scenes/testingshader.tscn" id="5_mnsao"]
 
@@ -444,6 +445,8 @@ offset_right = 8.0
 offset_bottom = 8.0
 
 [node name="LabTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yld62")
+volume_db = -10.0
 
 [node name="Portal" parent="." instance=ExtResource("5_m3fgr")]
 

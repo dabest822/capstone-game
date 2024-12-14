@@ -1,48 +1,62 @@
 extends Button
 
-@onready var traversal_title = get_node("/root/Node2D/TraversalTitle") # Correct path to the TraversalTitle node
-var float_direction = 1 # Direction of floating (1 for up, -1 for down)
-var float_speed = 10.0 # Speed of the floating effect
-var float_range = 10.0 # Maximum range of the floating effect
+@onready var traversal_title = get_node("/root/Node2D/TraversalTitle")
+@onready var title_theme = get_node("/root/Node2D/TitleTheme")
+
+var float_direction = 1
+var float_speed = 10.0
+var float_range = 10.0
 var initial_position = Vector2()
 
 func _ready():
-	# Remove focus styling
+	# Button display fixes
+	custom_minimum_size = Vector2(200, 80)  # Adjust these values based on your needs
+	alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	# Make sure the button grows with the text
+	size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
+	# Original button setup
 	focus_mode = Control.FOCUS_NONE
-
-	# Set normal text color (white or whatever your default is)
 	add_theme_color_override("font_color", Color(1, 1, 1, 1))
-
-	# Set hover color
 	add_theme_color_override("font_hover_color", Color(0, 0.8, 0.8, 1))
-
-	# Optional: Set pressed color
 	add_theme_color_override("font_pressed_color", Color(0, 0.9, 0.7, 1))
-
-	# Connect the pressed signal to our handler
+	add_theme_constant_override("outline_size", 2)
+	
 	pressed.connect(_on_pressed)
-
-	# Store the initial position of the title label
+	
 	if traversal_title:
 		initial_position = traversal_title.position
+		
+	# Start playing the title theme
+	if title_theme and !title_theme.playing:
+		title_theme.play()
 
 func _on_pressed():
-	# Check which button was pressed based on its name
 	if name == "Quit":
+		# Stop music only when quitting
+		if title_theme and title_theme.playing:
+			title_theme.stop()
 		get_tree().quit()
 	elif name == "Play":
-		# Signal the Camera2D script to start the game
 		var camera = get_node("/root/Node2D/EarthZoom/Camera2D")
 		if camera:
 			camera.start_game()
 	elif name == "Options":
+		# Stop music when going to options
+		if title_theme and title_theme.playing:
+			title_theme.stop()
 		get_tree().change_scene_to_file("res://Scenes/Options.tscn")
 
 func _process(delta):
-	# Apply floating effect to the title
 	if traversal_title:
 		traversal_title.position.y += float_speed * float_direction * delta
 		if traversal_title.position.y - initial_position.y > float_range:
-			float_direction = -1 # Reverse direction to go up
+			float_direction = -1
 		elif traversal_title.position.y - initial_position.y < -float_range:
-			float_direction = 1 # Reverse direction to go down
+			float_direction = 1
+
+func _exit_tree():
+	if title_theme and title_theme.playing:
+		title_theme.stop()

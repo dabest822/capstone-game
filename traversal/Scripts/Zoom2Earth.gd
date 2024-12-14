@@ -68,8 +68,13 @@ func _process(delta):
 func check_transition():
 	# Check if both zooming and slowing down are complete
 	if not zooming and not slowing_down:
-		if get_tree() != null: # Ensure the SceneTree is valid
-			get_tree().change_scene_to_file(scene_to_load) # Change to the IntroScene
+		# Stop the title music before changing scenes
+		var title_theme = get_node("/root/Node2D/TitleTheme")
+		if title_theme and title_theme.playing:
+			title_theme.stop()
+			
+		if get_tree() != null:
+			get_tree().change_scene_to_file(scene_to_load)
 		else:
 			print("Error: Unable to access SceneTree.")
 
