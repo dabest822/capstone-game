@@ -4,9 +4,9 @@ extends CanvasLayer
 @export var fade_time: float = 1.0
 
 func _ready():
-	# Check if we're in the titlescreen scene using the explicit path
+	# Check if we're in the titlescreen scene using the scene path
 	var root = get_tree().get_current_scene()
-	if root and get_tree().current_scene == load("res://Scenes/titlescreen.tscn"):
+	if root and root.scene_file_path == "res://Scenes/titlescreen.tscn":
 		print("On titlescreen. Shader displayed.")
 		visible = true
 		$ColorRect.visible = true
