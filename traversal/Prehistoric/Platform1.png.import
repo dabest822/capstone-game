@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjhyg3vhu5pc3"
-path="res://.godot/imported/PC Computer - Arcanists - Volcano & Slab.png-c914451ee15b77e4f594044fa6c10454.ctex"
+uid="uid://beftli146oey4"
+path="res://.godot/imported/Platform1.png-a192a6c9e4ad67038d46933136fe9395.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/PC Computer - Arcanists - Volcano & Slab.png"
-dest_files=["res://.godot/imported/PC Computer - Arcanists - Volcano & Slab.png-c914451ee15b77e4f594044fa6c10454.ctex"]
+source_file="res://Prehistoric/Platform1.png"
+dest_files=["res://.godot/imported/Platform1.png-a192a6c9e4ad67038d46933136fe9395.ctex"]
 
 [params]
 

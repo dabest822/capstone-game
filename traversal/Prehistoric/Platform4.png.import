@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg2xh4iebvgw7"
-path="res://.godot/imported/Sega Genesis 32X - Ecco Jr - Volcano Bay.png-a61442e9dff053c0215b5a816b4943b2.ctex"
+uid="uid://cylky5lglvna1"
+path="res://.godot/imported/Platform4.png-6e21c034085e7ece6d6a29352d4cf8c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/Sega Genesis 32X - Ecco Jr - Volcano Bay.png"
-dest_files=["res://.godot/imported/Sega Genesis 32X - Ecco Jr - Volcano Bay.png-a61442e9dff053c0215b5a816b4943b2.ctex"]
+source_file="res://Prehistoric/Platform4.png"
+dest_files=["res://.godot/imported/Platform4.png-6e21c034085e7ece6d6a29352d4cf8c0.ctex"]
 
 [params]
 

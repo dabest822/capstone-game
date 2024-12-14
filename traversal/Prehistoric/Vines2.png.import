@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi1dfsfvyegew"
-path="res://.godot/imported/SNES - Super Mario RPG Legend of the Seven Stars - Boulder_bria.png-47641a4e9422344f3c1fefc79b45b30a.ctex"
+uid="uid://clsjsvvxggfud"
+path="res://.godot/imported/Vines2.png-7d86ed5ff5fd6066da70f90edb942111.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/SNES - Super Mario RPG Legend of the Seven Stars - Boulder_bria.png"
-dest_files=["res://.godot/imported/SNES - Super Mario RPG Legend of the Seven Stars - Boulder_bria.png-47641a4e9422344f3c1fefc79b45b30a.ctex"]
+source_file="res://Prehistoric/Vines2.png"
+dest_files=["res://.godot/imported/Vines2.png-7d86ed5ff5fd6066da70f90edb942111.ctex"]
 
 [params]
 

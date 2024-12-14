@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgl5oug6d0voc"
-path="res://.godot/imported/Neo Geo NGCD - Blues Journey Raguy - Vines-Photoroom.png-f5a5cb8471544f5e0bdde5b532661443.ctex"
+path="res://.godot/imported/Vines1.png-d337535a7be62b405ac364b7a1f1be9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/Neo Geo NGCD - Blues Journey Raguy - Vines-Photoroom.png"
-dest_files=["res://.godot/imported/Neo Geo NGCD - Blues Journey Raguy - Vines-Photoroom.png-f5a5cb8471544f5e0bdde5b532661443.ctex"]
+source_file="res://Prehistoric/Vines1.png"
+dest_files=["res://.godot/imported/Vines1.png-d337535a7be62b405ac364b7a1f1be9c.ctex"]
 
 [params]
 

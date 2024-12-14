@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cylky5lglvna1"
-path="res://.godot/imported/Wii - Monkey King The Legend Begins - Platforms_tracer.png-5b903ab496577144cc454cb889184075.ctex"
+uid="uid://bdcmh1tsgkehf"
+path="res://.godot/imported/Platform3.png-7a4cb425b0bbff4d28f0b52e720ccf5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/Wii - Monkey King The Legend Begins - Platforms_tracer.png"
-dest_files=["res://.godot/imported/Wii - Monkey King The Legend Begins - Platforms_tracer.png-5b903ab496577144cc454cb889184075.ctex"]
+source_file="res://Prehistoric/Platform3.png"
+dest_files=["res://.godot/imported/Platform3.png-7a4cb425b0bbff4d28f0b52e720ccf5b.ctex"]
 
 [params]
 

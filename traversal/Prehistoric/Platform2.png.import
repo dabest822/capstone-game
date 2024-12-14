@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clsjsvvxggfud"
-path="res://.godot/imported/spritesheet.png-c933ab6865579eb24d5b766673d6decc.ctex"
+uid="uid://bjhyg3vhu5pc3"
+path="res://.godot/imported/Platform2.png-3c4885432f46a2981df7dfb8ff537950.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-c933ab6865579eb24d5b766673d6decc.ctex"]
+source_file="res://Prehistoric/Platform2.png"
+dest_files=["res://.godot/imported/Platform2.png-3c4885432f46a2981df7dfb8ff537950.ctex"]
 
 [params]
 

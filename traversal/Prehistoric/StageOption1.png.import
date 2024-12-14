@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beftli146oey4"
-path="res://.godot/imported/DS DSi - Castlevania Portrait of Ruin - Platforms-Photoroom.png-9d458ebcf2f3f6e0abddbacbcf5a8bd8.ctex"
+uid="uid://cw2eg5awg0t0g"
+path="res://.godot/imported/StageOption1.png-e5cafe18430b4f1975e0d5d437984ad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/DS DSi - Castlevania Portrait of Ruin - Platforms-Photoroom.png"
-dest_files=["res://.godot/imported/DS DSi - Castlevania Portrait of Ruin - Platforms-Photoroom.png-9d458ebcf2f3f6e0abddbacbcf5a8bd8.ctex"]
+source_file="res://Prehistoric/StageOption1.png"
+dest_files=["res://.godot/imported/StageOption1.png-e5cafe18430b4f1975e0d5d437984ad2.ctex"]
 
 [params]
 

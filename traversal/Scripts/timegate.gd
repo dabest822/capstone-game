@@ -4,11 +4,11 @@ extends CanvasLayer
 @export var fade_time: float = 1.0
 
 func _ready():
-	# Make sure ColorRect fills screen (even if not used later)
-	var _color_rect = $ColorRect
-	# Nothing else needed here - let it run forever
+   # Hide the shader display by default
+	visible = false
+	$ColorRect.visible = false
 
-# Optional: Keep pause support
-func _process(_delta):
+# Keep your existing process function for pause support
+func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bsnmdmw02ntpc"]
+[gd_scene load_steps=57 format=3 uid="uid://bsnmdmw02ntpc"]
 
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
 [ext_resource type="Script" path="res://Scripts/markhazard.gd" id="1_hj6as"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dahnxi5hvrhmy" path="res://Platforms/testplatform.png" id="3_3sjy4"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="3_hfyyh"]
 [ext_resource type="PackedScene" uid="uid://clc20cl68j84w" path="res://Scenes/DrChen.tscn" id="5_amggi"]
+[ext_resource type="PackedScene" uid="uid://w7bbtfkl36gt" path="res://Scenes/testingshader.tscn" id="7_6mqsk"]
+[ext_resource type="PackedScene" uid="uid://c8qvxvjp46sdu" path="res://Scenes/portaltest1.tscn" id="8_jfw01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cm4b7"]
 atlas = ExtResource("1_08u8n")
@@ -408,4 +410,11 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 
+[node name="ShaderDisplay" parent="." instance=ExtResource("7_6mqsk")]
+visible = false
+
+[node name="Portal" parent="." instance=ExtResource("8_jfw01")]
+
 [editable path="DrChen"]
+[editable path="ShaderDisplay"]
+[editable path="Portal"]

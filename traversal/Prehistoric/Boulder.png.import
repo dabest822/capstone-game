@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://onw3j748hbhm"
-path="res://.godot/imported/PlayStation - SaGa Frontier 2 - Fossil Caves.png-0326026daea2da49e4b68c9af9fe6314.ctex"
+uid="uid://bi1dfsfvyegew"
+path="res://.godot/imported/Boulder.png-129b3add92d23059bc11212a94486c70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/PlayStation - SaGa Frontier 2 - Fossil Caves.png"
-dest_files=["res://.godot/imported/PlayStation - SaGa Frontier 2 - Fossil Caves.png-0326026daea2da49e4b68c9af9fe6314.ctex"]
+source_file="res://Prehistoric/Boulder.png"
+dest_files=["res://.godot/imported/Boulder.png-129b3add92d23059bc11212a94486c70.ctex"]
 
 [params]
 

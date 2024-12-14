@@ -923,7 +923,7 @@ shape = SubResource("RectangleShape2D_0b4db")
 position = Vector2(720, 373)
 sprite_frames = SubResource("SpriteFrames_pgl0a")
 animation = &"Swimming2"
-frame_progress = 0.260247
+frame_progress = 0.63831
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Megalodon"]
 position = Vector2(721.5, 378.5)

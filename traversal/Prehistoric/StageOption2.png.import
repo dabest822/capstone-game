@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdcmh1tsgkehf"
-path="res://.godot/imported/testplatform.png-01f47bec82c234cb92c7c03ef4859760.ctex"
+uid="uid://jdxp8gd6so5s"
+path="res://.godot/imported/StageOption2.png-b2863a51168d2c5c710a6c0a997edd7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prehistoric/testplatform.png"
-dest_files=["res://.godot/imported/testplatform.png-01f47bec82c234cb92c7c03ef4859760.ctex"]
+source_file="res://Prehistoric/StageOption2.png"
+dest_files=["res://.godot/imported/StageOption2.png-b2863a51168d2c5c710a6c0a997edd7f.ctex"]
 
 [params]
 
