@@ -1,7 +1,7 @@
 [gd_scene load_steps=69 format=3 uid="uid://xv45gf131qvb"]
 
 [ext_resource type="Texture2D" uid="uid://cl08kotd83dia" path="res://Lab/maintower.png" id="1_2hl51"]
-[ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://2d3dsecond.tres" id="1_4ukqo"]
+[ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://Shaders/2d3dsecond.tres" id="1_4ukqo"]
 [ext_resource type="Texture2D" uid="uid://c33v1b2xcns84" path="res://Sprites/sky.png" id="1_ajxtu"]
 [ext_resource type="Script" path="res://Scenes/tilemappath.gd" id="3_5pm4g"]
 [ext_resource type="Material" uid="uid://8luat0sy8w6e" path="res://Shaders/celshading.tres" id="3_rhgwy"]
