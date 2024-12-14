@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bjy6geoeje0yl"]
+
+[ext_resource type="Shader" path="res://Rain.gdshader" id="1_ke64p"]
+
+[resource]
+shader = ExtResource("1_ke64p")
+shader_parameter/rain_amount = 85.0
+shader_parameter/near_rain_length = 0.2
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.2
+shader_parameter/far_rain_width = 0.1
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.768627, 0.819608, 0.827451, 1)
+shader_parameter/base_rain_speed = 0.7
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = -0.08
