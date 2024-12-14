@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://pjn8cso46stx"]
+[gd_scene load_steps=120 format=3 uid="uid://pjn8cso46stx"]
 
 [ext_resource type="Texture2D" uid="uid://cktl7y3ade2nq" path="res://Enemies/Prehistoric/Angry Plant.png" id="1_gvg6r"]
 [ext_resource type="Texture2D" uid="uid://bsi08d4snenld" path="res://Enemies/Prehistoric/Tiger.png" id="2_1d0xn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmxhlw8u6hnm7" path="res://Enemies/Prehistoric/Neanderthal.png" id="5_0rqs0"]
 [ext_resource type="Texture2D" uid="uid://be3ocpfm8dq0d" path="res://Enemies/Prehistoric/Torch.png" id="6_6mtrw"]
 [ext_resource type="Texture2D" uid="uid://irna2ptx2dw" path="res://Enemies/Prehistoric/Pterodactyl.png" id="7_31fbv"]
+[ext_resource type="Script" path="res://Scripts/enemies.gd" id="7_vwnen"]
 [ext_resource type="Texture2D" uid="uid://ntrndrst3ia5" path="res://Enemies/Prehistoric/Raptor.png" id="8_vvrnd"]
 [ext_resource type="Texture2D" uid="uid://d3e4iib8lw5tb" path="res://Enemies/Prehistoric/Megalodon.png" id="9_3f2rk"]
 
@@ -876,6 +877,7 @@ shape = SubResource("RectangleShape2D_6wdhs")
 [node name="Timer" type="Timer" parent="Neanderthal"]
 
 [node name="Pterodactyl" type="CharacterBody2D" parent="."]
+script = ExtResource("7_vwnen")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pterodactyl"]
 position = Vector2(529, 213)
@@ -923,7 +925,7 @@ shape = SubResource("RectangleShape2D_0b4db")
 position = Vector2(720, 373)
 sprite_frames = SubResource("SpriteFrames_pgl0a")
 animation = &"Swimming2"
-frame_progress = 0.63831
+frame_progress = 0.330864
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Megalodon"]
 position = Vector2(721.5, 378.5)

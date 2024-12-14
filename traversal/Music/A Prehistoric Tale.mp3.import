@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddl3l1nvo7avx"
+path="res://.godot/imported/A Prehistoric Tale.mp3-39b15b49c6209046b1a71b3734023fd1.mp3str"
+
+[deps]
+
+source_file="res://Music/A Prehistoric Tale.mp3"
+dest_files=["res://.godot/imported/A Prehistoric Tale.mp3-39b15b49c6209046b1a71b3734023fd1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

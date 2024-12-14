@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bsnmdmw02ntpc"]
+[gd_scene load_steps=58 format=3 uid="uid://bsnmdmw02ntpc"]
 
 [ext_resource type="Texture2D" uid="uid://3sq4hu76pqoo" path="res://Sprites/MainCH/new best.png" id="1_08u8n"]
 [ext_resource type="Script" path="res://Scripts/markhazard.gd" id="1_hj6as"]
@@ -352,6 +352,10 @@ polygon = PackedVector2Array(-638.284, -86.4543, -624.246, -64.2076, -659.751, -
 radius = 29.0
 height = 142.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2po7e"]
+radius = 36.0
+height = 152.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txq1k"]
 size = Vector2(1112, 49)
 
@@ -382,6 +386,13 @@ occluder = SubResource("OccluderPolygon2D_o87ow")
 [node name="CollisionShapeMark" type="CollisionShape2D" parent="CharacterBody2D1"]
 position = Vector2(605, 480)
 shape = SubResource("CapsuleShape2D_ak2xt")
+
+[node name="HurtBox" type="Area2D" parent="CharacterBody2D1"]
+position = Vector2(605, 469)
+
+[node name="CollisionShape2DDDD" type="CollisionShape2D" parent="CharacterBody2D1/HurtBox"]
+position = Vector2(3, 13)
+shape = SubResource("CapsuleShape2D_2po7e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

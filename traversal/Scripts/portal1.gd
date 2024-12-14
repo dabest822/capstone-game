@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
-@onready var shader_display = $"../../ShaderDisplay"
 @onready var portal_area = $"../Area2DPortal"
+@onready var shader_display = $"../../ShaderDisplay"
 
 func _ready():
 	setup_portal()
@@ -15,42 +15,58 @@ func _ready():
 
 func _on_player_entered(body):
 	if body is CharacterBody2D:
-		print("Starting transition sequence...")
-		trigger_transition()
+		if get_node("/root/TransitionManager"):  # Check if TransitionManager exists
+			get_node("/root/TransitionManager").transition_to_scene("res://Scenes/PrehistoricEra.tscn")
+		else:
+			print("TransitionManager not found!")
 
 func _on_player_exited(body):
 	if body is CharacterBody2D:
 		pass
 
 func trigger_transition():
+	if is_transitioning:
+		return
+		
+	is_transitioning = true
 	print("Making shader visible")
-	shader_display.visible = true
-	$"../../ShaderDisplay/ColorRect".visible = true  # Make sure ColorRect is visible too
 	
-	print("Starting transition timer...")
-	var timer = get_tree().create_timer(5.0)
-	timer.timeout.connect(_on_transition_complete)
+	if shader_display:
+		shader_display.start_transition()  # Use the new method
 	
-	# Hide other nodes
 	print("Hiding player and map")
 	var nodes_to_hide = [
-		$"../../CharacterBody2D",
-		$"../../TileMapLayer",
+		get_node_or_null("../../CharacterBody2D"),
+		get_node_or_null("../../TileMapLayer"),
 	]
 	
 	for node in nodes_to_hide:
 		if node:
 			node.hide()
+	
+	# Create scene change timer
+	var timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = true
+	timer.wait_time = 5.0
+	timer.timeout.connect(_on_transition_complete)
+	timer.start()
 
 func _on_transition_complete():
 	print("Timer completed, changing scene...")
-	# Make sure the path is correct
+	if not is_inside_tree():
+		return
+		
 	var next_scene = "res://Scenes/PrehistoricEra.tscn"
 	print("Loading scene: ", next_scene)
-	var err = get_tree().change_scene_to_file(next_scene)
-	if err != OK:
-		print("Error loading scene: ", err)
+	
+	if get_tree():
+		var err = get_tree().change_scene_to_file(next_scene)
+		if err != OK:
+			print("Error loading scene: ", err)
+		is_transitioning = false
 
+# Visual Effects Setup
 func setup_portal():
 	rotation_degrees = 90
 	scale = Vector2(3, 1.5)
@@ -99,7 +115,6 @@ func setup_particles():
 	particle_material.initial_velocity_max = 45.0
 	particle_material.gravity = Vector3(0, 0, 0)
 	
-	# Add color to particles
 	particle_material.color = Color(0, 0.7, 1.0, 1)  # Blue color
 	
 	particles.process_material = particle_material
@@ -127,15 +142,3 @@ func setup_light():
 	light.texture = texture
 	
 	add_child(light)
-
-# Optional rainbow particles function - uncomment and modify particle_material.color above to use
-#func create_color_gradient():
-#	var gradient = Gradient.new()
-#	gradient.colors = [
-#		Color(0, 0.7, 1.0, 1),    # Blue
-#		Color(0.5, 0, 1.0, 1),    # Purple
-#		Color(1, 0, 0.7, 1)       # Pink
-#	]
-#	var gradientTexture = GradientTexture1D.new()
-#	gradientTexture.gradient = gradient
-#	return gradientTexture

@@ -1,14 +1,35 @@
 extends CharacterBody2D
 
+# Movement Constants
 const SPEED = 250.0
 const RUN_SPEED = 500.0
 const JUMP_VELOCITY = -500.0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
+# Health System Constants
+const MAX_HEALTH = 100
+const INVINCIBILITY_TIME = 1.5
 
-# Add reference to shader display
-@onready var shader_display = $"../ShaderDisplay"
+# Variables
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var current_health = MAX_HEALTH
+var is_invincible = false
+
+# Node References
+@onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
+@onready var health_bar = $"../MainGUI/GUIRoot/MarginContainer/TopBar/HealthBar"
+@onready var invincibility_timer = Timer.new()
+
+func _ready():
+	# Health system setup
+	add_child(invincibility_timer)
+	invincibility_timer.one_shot = true
+	invincibility_timer.wait_time = INVINCIBILITY_TIME
+	invincibility_timer.timeout.connect(_on_invincibility_timeout)
+	
+	# Initialize health bar
+	if health_bar:
+		health_bar.max_value = MAX_HEALTH
+		health_bar.value = current_health
 
 func _physics_process(delta):
 	# Add gravity
@@ -31,15 +52,14 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED
 			if is_on_floor():
 				animated_sprite.play("Walk")
-		# Flip the sprite based on direction
 		animated_sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor():
 			if animated_sprite.flip_h:
-				animated_sprite.play("Idle2") # Play Idle2 if facing left
+				animated_sprite.play("Idle2")
 			else:
-				animated_sprite.play("Idle") # Play Idle if facing right
+				animated_sprite.play("Idle")
 
 	# Handle airborne animation
 	if not is_on_floor() and velocity.y < 0:
@@ -47,37 +67,75 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-# Updated portal interaction
-func _on_area_2d_portal_body_entered(body):
+func take_damage(amount):
+	if is_invincible:
+		return
+		
+	current_health = max(0, current_health - amount)
+	if health_bar:
+		health_bar.value = current_health
+	
+	# Start invincibility
+	is_invincible = true
+	invincibility_timer.start()
+	
+	# Flash effect
+	var tween = create_tween()
+	tween.tween_property(animated_sprite, "modulate:a", 0.5, 0.1)
+	tween.tween_property(animated_sprite, "modulate:a", 1.0, 0.1)
+	tween.set_loops(int(INVINCIBILITY_TIME / 0.2))
+	
+	if current_health <= 0:
+		die()
+
+func heal(amount):
+	current_health = min(MAX_HEALTH, current_health + amount)
+	if health_bar:
+		health_bar.value = current_health
+
+func _on_invincibility_timeout():
+	is_invincible = false
+	animated_sprite.modulate.a = 1.0
+
+func die():
+	set_physics_process(false)
+	await get_tree().create_timer(1.0).timeout
+	var err = get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+	if err != OK:
+		print("Error loading game over scene: ", err)
+
+func _on_area_body_entered(body):
 	if body == self:
-		print("Starting transition sequence...")
 		trigger_portal_transition()
 
 func trigger_portal_transition():
-	print("Making shader visible")
-	shader_display.visible = true
-	$"../ShaderDisplay/ColorRect".visible = true
+	# Get references to nodes we need to hide
+	var shader_display = get_node_or_null("../ShaderDisplay")
+	var color_rect = get_node_or_null("../ShaderDisplay/ColorRect")
+	var tilemap = get_node_or_null("../TileMapLayer")
 	
-	print("Starting transition timer...")
-	var timer = get_tree().create_timer(5.0)
-	timer.timeout.connect(_on_transition_complete)
+	# Show transition effect
+	if shader_display:
+		shader_display.visible = true
+	if color_rect:
+		color_rect.visible = true
 	
-	# Hide other nodes
-	print("Hiding game elements")
-	var nodes_to_hide = [
-		self,  # Hide the player
-		$"../TileMapLayer",  # Hide the tilemap
-		# Add any other nodes you want to hide
-	]
+	# Hide nodes
+	if tilemap:
+		tilemap.hide()
+	hide()
 	
-	for node in nodes_to_hide:
-		if node:
-			node.hide()
+	# Create and start transition timer
+	var transition_timer = Timer.new()
+	add_child(transition_timer)
+	transition_timer.one_shot = true
+	transition_timer.wait_time = 5.0
+	transition_timer.timeout.connect(_on_transition_complete)
+	transition_timer.start()
 
 func _on_transition_complete():
-	print("Timer completed, changing scene...")
-	var next_scene = "res://Scenes/PrehistoricEra.tscn"
-	print("Loading scene: ", next_scene)
-	var err = get_tree().change_scene_to_file(next_scene)
-	if err != OK:
-		print("Error loading scene: ", err)
+	# We need to ensure we're still in the scene tree
+	if is_inside_tree():
+		var err = get_tree().change_scene_to_file("res://Scenes/PrehistoricEra.tscn")
+		if err != OK:
+			print("Error changing scene: ", err)

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccse7dbtrrkmj"]
+
+[ext_resource type="Shader" path="res://Shaders/circlearoundsomething.gdshader" id="1_knmlw"]
+
+[resource]
+shader = ExtResource("1_knmlw")
+shader_parameter/width = 0.3
+shader_parameter/gradient_ease = 5.0
+shader_parameter/fill_ratio = 0.8

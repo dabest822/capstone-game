@@ -244,10 +244,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 585.0
-offset_right = 282.0
-offset_bottom = 740.0
+offset_left = 15.0
+offset_top = 592.0
+offset_right = 283.0
+offset_bottom = 747.0
 scale = Vector2(0.3, 0.3)
 theme_override_fonts/font = ExtResource("2_tt0k6")
 theme_override_font_sizes/font_size = 125
