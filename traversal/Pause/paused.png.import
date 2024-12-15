@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dktyyitfyb3s"
-path="res://.godot/imported/Option2.png-59525d9b7b311d13a2084dcf6dd81d3c.ctex"
+uid="uid://bmxl0qqa50b1x"
+path="res://.godot/imported/paused.png-de6996f0d18d072c551e8056b89d7a81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Delorean/Option2.png"
-dest_files=["res://.godot/imported/Option2.png-59525d9b7b311d13a2084dcf6dd81d3c.ctex"]
+source_file="res://Pause/paused.png"
+dest_files=["res://.godot/imported/paused.png-de6996f0d18d072c551e8056b89d7a81.ctex"]
 
 [params]
 

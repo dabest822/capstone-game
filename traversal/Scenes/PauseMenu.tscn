@@ -1,55 +1,13 @@
-[gd_scene load_steps=54 format=3 uid="uid://deqdteuby686a"]
+[gd_scene load_steps=42 format=3 uid="uid://deqdteuby686a"]
 
 [ext_resource type="Script" path="res://Scripts/Paused.gd" id="1_7hrb8"]
 [ext_resource type="FontFile" uid="uid://cte02xoayv4a7" path="res://Fonts/Cubic_11_1.013_R.ttf" id="2_kxs5h"]
+[ext_resource type="Texture2D" uid="uid://bmxl0qqa50b1x" path="res://Pause/paused.png" id="3_d5k10"]
 [ext_resource type="Texture2D" uid="uid://bnhkym70acjy3" path="res://Pause/PauseButton.png" id="3_s6q8v"]
 [ext_resource type="Texture2D" uid="uid://cb1cio4fbdohh" path="res://GameOver/contnotpressed-Photoroom.png" id="3_ymhtv"]
-[ext_resource type="Texture2D" uid="uid://de1s42mkcvrc" path="res://Pause/spritesheet.png" id="4_auk23"]
+[ext_resource type="Material" uid="uid://5akagm5pdv2w" path="res://Shaders/VHSEffect.tres" id="4_3d682"]
 [ext_resource type="Texture2D" uid="uid://b6ug3olao3bux" path="res://Pause/PC Computer - Leos Fortune - Hourglass.png" id="5_48qk7"]
-[ext_resource type="Texture2D" uid="uid://dqpmi3xvt3mbo" path="res://Pause/animated_clock.png" id="6_2y5kh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_blfir"]
-atlas = ExtResource("4_auk23")
-region = Rect2(0, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_msspo"]
-atlas = ExtResource("4_auk23")
-region = Rect2(514, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ka763"]
-atlas = ExtResource("4_auk23")
-region = Rect2(1028, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufy1k"]
-atlas = ExtResource("4_auk23")
-region = Rect2(1542, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77wky"]
-atlas = ExtResource("4_auk23")
-region = Rect2(2056, 0, 514, 514)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8q2nr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_blfir")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_msspo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ka763")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufy1k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77wky")
-}],
-"loop": true,
-"name": &"default",
-"speed": 4.0
-}]
+[ext_resource type="Texture2D" uid="uid://d11ucogyl1fw3" path="res://Sprites/selectarrow.png" id="5_v0evb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17t2l"]
 atlas = ExtResource("5_48qk7")
@@ -283,56 +241,6 @@ animations = [{
 "speed": 32.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yeyns"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(0, 0, 32, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhl6c"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(32, 0, 32, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erb4"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(64, 0, 32, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eujnh"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(64, 0, 32, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wy7l"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(32, 0, 32, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cy1fa"]
-atlas = ExtResource("6_2y5kh")
-region = Rect2(0, 0, 32, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vv0un"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yeyns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uhl6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8erb4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eujnh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4wy7l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cy1fa")
-}],
-"loop": true,
-"name": &"default",
-"speed": 4.0
-}]
-
 [node name="Node2D" type="CanvasLayer"]
 process_mode = 3
 layer = 10
@@ -346,6 +254,7 @@ offset_bottom = 40.0
 
 [node name="Transparency" type="ColorRect" parent="Panel"]
 z_index = -1
+material = ExtResource("4_3d682")
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -354,39 +263,37 @@ offset_bottom = 640.0
 color = Color(0.344076, 0.344076, 0.344076, 1)
 
 [node name="PauseSign" type="Sprite2D" parent="Panel"]
-position = Vector2(1089, 55)
+visible = false
+position = Vector2(1104, 601)
 scale = Vector2(0.359375, 0.359375)
 texture = ExtResource("3_s6q8v")
 
-[node name="Hourglass" type="AnimatedSprite2D" parent="Panel"]
-visible = false
-position = Vector2(676.5, 150.5)
-scale = Vector2(0.184825, 0.184825)
-sprite_frames = SubResource("SpriteFrames_8q2nr")
-frame = 4
-frame_progress = 0.32479
+[node name="Paused" type="Sprite2D" parent="Panel"]
+position = Vector2(574, 55)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_d5k10")
+vframes = 3
+frame = 2
+
+[node name="SelectArrow" type="Sprite2D" parent="Panel"]
+z_index = -1
+position = Vector2(341, 317)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_v0evb")
 
 [node name="SpinningHourglass" type="AnimatedSprite2D" parent="Panel"]
-visible = false
-position = Vector2(859, 364)
+position = Vector2(1064, 560)
 sprite_frames = SubResource("SpriteFrames_k5t5j")
 frame = 7
 frame_progress = 0.40472
 
-[node name="Clock" type="AnimatedSprite2D" parent="Panel"]
-visible = false
-position = Vector2(485, 313)
-sprite_frames = SubResource("SpriteFrames_vv0un")
-frame = 1
-frame_progress = 0.563454
-
 [node name="MenuContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 449.0
-offset_top = 356.0
-offset_right = 1078.0
-offset_bottom = 1108.0
-scale = Vector2(0.35, 0.35)
+offset_left = 420.0
+offset_top = 480.0
+offset_right = 1049.0
+offset_bottom = 1232.0
+scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 200
 
 [node name="Options" type="Button" parent="Panel/MenuContainer"]
@@ -394,32 +301,34 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kxs5h")
 theme_override_font_sizes/font_size = 150
 text = "Options"
+flat = true
 
 [node name="Continue" type="Button" parent="Panel"]
 layout_mode = 2
-offset_left = 436.0
-offset_top = 180.0
-offset_right = 580.0
-offset_bottom = 204.0
-scale = Vector2(1.5, 1.5)
+offset_left = 360.0
+offset_top = 280.0
+offset_right = 504.0
+offset_bottom = 304.0
+scale = Vector2(3, 3)
 icon = ExtResource("3_ymhtv")
 flat = true
 icon_alignment = 1
 
 [node name="VolumeBar" type="HSlider" parent="Panel"]
 layout_mode = 2
-offset_left = 448.0
-offset_top = 308.0
-offset_right = 685.0
-offset_bottom = 324.0
+offset_left = 400.0
+offset_top = 445.0
+offset_right = 637.0
+offset_bottom = 461.0
+scale = Vector2(1.5, 1.5)
 
 [node name="Volume" type="Label" parent="Panel"]
 layout_mode = 2
-offset_left = 448.0
-offset_top = 244.0
-offset_right = 1077.0
-offset_bottom = 419.0
-scale = Vector2(0.35, 0.35)
+offset_left = 455.0
+offset_top = 360.0
+offset_right = 939.0
+offset_bottom = 535.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_kxs5h")
 theme_override_font_sizes/font_size = 150
 text = "Volume"

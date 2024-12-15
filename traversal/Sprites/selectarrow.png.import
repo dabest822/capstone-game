@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dktyyitfyb3s"
-path="res://.godot/imported/Option2.png-59525d9b7b311d13a2084dcf6dd81d3c.ctex"
+uid="uid://d11ucogyl1fw3"
+path="res://.godot/imported/selectarrow.png-472e7f231620c72e86c739e3483253fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Delorean/Option2.png"
-dest_files=["res://.godot/imported/Option2.png-59525d9b7b311d13a2084dcf6dd81d3c.ctex"]
+source_file="res://Sprites/selectarrow.png"
+dest_files=["res://.godot/imported/selectarrow.png-472e7f231620c72e86c739e3483253fe.ctex"]
 
 [params]
 

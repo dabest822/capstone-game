@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://do838p8dqos40"]
+
+[ext_resource type="Shader" path="res://Shaders/glitching.gdshader" id="1_0rrdh"]
+
+[resource]
+shader = ExtResource("1_0rrdh")
+shader_parameter/range = 0.03
+shader_parameter/noiseQuality = 150.0
+shader_parameter/noiseIntensity = 0.004
+shader_parameter/offsetIntensity = 0.01
+shader_parameter/colorOffsetIntensity = 1.3
