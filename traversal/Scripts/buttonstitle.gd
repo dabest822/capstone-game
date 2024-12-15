@@ -10,6 +10,10 @@ var initial_position = Vector2()
 
 func _ready():
 	# Button display fixes
+	print("WynnCredits - Visible:", get_node("/root/Node2D/WynnCredits").visible, 
+	", Position:", get_node("/root/Node2D/WynnCredits").position)
+	print("Demo - Visible:", get_node("/root/Node2D/Demo").visible, 
+	", Position:", get_node("/root/Node2D/Demo").position)
 	custom_minimum_size = Vector2(200, 80)  # Adjust these values based on your needs
 	alignment = HORIZONTAL_ALIGNMENT_CENTER
 	

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqdteuby686a"]
+
+[ext_resource type="Script" path="res://Scripts/Paused.gd" id="1_7hrb8"]
+[ext_resource type="FontFile" uid="uid://cte02xoayv4a7" path="res://Fonts/Cubic_11_1.013_R.ttf" id="2_kxs5h"]
+
+[node name="Node2D" type="CanvasLayer"]
+script = ExtResource("1_7hrb8")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Paused" type="Label" parent="Panel"]
+layout_mode = 2
+offset_right = 475.0
+offset_bottom = 23.0
+
+[node name="Volume" type="Label" parent="Panel"]
+layout_mode = 2
+offset_right = 475.0
+offset_bottom = 175.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_kxs5h")
+theme_override_font_sizes/font_size = 150
+text = "Volume"
+
+[node name="Resume" type="Button" parent="Panel"]
+layout_mode = 2
+offset_right = 475.0
+offset_bottom = 8.0
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 2
+offset_right = 475.0
+offset_bottom = 8.0
+
+[node name="VolumeBar" type="HSlider" parent="Panel"]
+layout_mode = 2
+offset_top = 12.0
+offset_right = 475.0
+offset_bottom = 28.0

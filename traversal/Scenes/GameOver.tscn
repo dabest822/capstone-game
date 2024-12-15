@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgnvnafeimiba"]
+
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_7pk16"]
+[ext_resource type="Texture2D" uid="uid://c1afo8hlnxndj" path="res://Sprites/Game Over.png" id="5_2rban"]
+[ext_resource type="Texture2D" uid="uid://b3kab2a4lbiop" path="res://Sprites/Mario Arrow.png" id="6_4ttub"]
+[ext_resource type="AudioStream" uid="uid://bo2328bib53on" path="res://Music/Game Over.mp3" id="8_chae4"]
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_7pk16")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(571, 319)
+texture = ExtResource("5_2rban")
+
+[node name="BackArrow" type="TextureButton" parent="."]
+offset_left = 30.0
+offset_top = 31.0
+offset_right = 209.0
+offset_bottom = 215.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("6_4ttub")
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_chae4")
+volume_db = -22.0
+autoplay = true
+
+[node name="Retry" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Quit" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
