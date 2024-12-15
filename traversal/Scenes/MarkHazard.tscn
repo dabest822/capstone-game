@@ -360,6 +360,7 @@ height = 152.0
 size = Vector2(1112, 49)
 
 [node name="MainCharacter" type="Node2D"]
+process_mode = 1
 
 [node name="CharacterBody2D1" type="CharacterBody2D" parent="."]
 z_index = 1

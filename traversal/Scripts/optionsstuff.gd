@@ -30,6 +30,9 @@ func _ready():
 
 	# Load the saved volume setting
 	volume_slider.value = GlobalSettings.volume_value  # Set slider value
+	var current_db = AudioServer.get_bus_volume_db(0)
+	var linear_value = db_to_linear(current_db)  # Convert from dB to linear (0-1)
+	volume_slider.value = linear_value * 100
 
 func _process(delta):
 	debug_timer += delta

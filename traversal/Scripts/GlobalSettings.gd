@@ -1,10 +1,16 @@
 extends Node
-
-var volume_value = 50  # Default volume for settings saving
+var volume_value = 50
 const PAUSE_MENU_SCENE = "res://Scenes/PauseMenu.tscn"
+var previous_scene_path = ""
+var previous_volume = 1.0
+var is_paused = false
 
-var previous_scene_path = ""  # Stores the path of the previous scene
-var previous_volume = 1.0  # Stores the previous volume level
+func _ready():
+	# Get reference to pause menu and set it up
+	var pause_menu = get_node("/root/PauseMenu")
+	if pause_menu:
+		pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+		pause_menu.hide()
 
 func save_settings():
 	var file = FileAccess.open("user://settings.cfg", FileAccess.WRITE)
@@ -27,27 +33,38 @@ func load_settings():
 	else:
 		print("No saved settings file found!")
 
-func _process(delta):
-	# Detect the "pause" input
-	if Input.is_action_just_pressed("pause"):
-		if get_tree().current_scene.name != "PauseMenu":
-			_open_pause_menu()
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		toggle_pause()
+		get_viewport().set_input_as_handled()
 
-func _open_pause_menu():
-	# Store the current scene path and volume
-	previous_scene_path = get_tree().current_scene.scene_file_path
-	previous_volume = AudioServer.get_bus_volume_db(0)
-	print("Stored previous scene: ", previous_scene_path)
-	print("Stored volume: ", previous_volume)
+func toggle_pause():
+	var pause_menu = get_node("/root/PauseMenu")
+	if !pause_menu:
+		print("Pause menu not found!")
+		return
 
-	# Set volume to 20% (0.2 linear, converted to dB)
-	_set_volume_to_20_percent()
+	is_paused = !is_paused
+	print("GlobalSettings - Pause state changed to: ", is_paused)
 
-	# Load the PauseMenu scene
-	get_tree().change_scene_to_file(PAUSE_MENU_SCENE)
+	if is_paused:
+		pause_menu.show()
+		# Enable processing on pause menu before pausing tree
+		pause_menu.set_process(true)
+		get_tree().paused = true
+		print("Game paused - Tree pause state: ", get_tree().paused)
+	else:
+		pause_menu.hide()
+		# Disable processing on pause menu after unpausing tree
+		pause_menu.set_process(false)
+		get_tree().paused = false
+		print("Game unpaused - Tree pause state: ", get_tree().paused)
 
-func _set_volume_to_20_percent():
-	# Convert linear value 0.2 to dB
-	var target_db = linear_to_db(0.2)  # Fixed function name
-	AudioServer.set_bus_volume_db(0, target_db)
-	print("Volume set to 20% (dB): ", target_db)
+func unpause_game():
+	if is_paused:
+		is_paused = false
+		var pause_menu = get_node("/root/PauseMenu")
+		if pause_menu:
+			pause_menu.hide()
+			get_tree().paused = false
+			print("Game unpaused")

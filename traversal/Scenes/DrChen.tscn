@@ -270,6 +270,7 @@ radius = 34.0
 height = 78.0
 
 [node name="DrChen" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ldhka")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
