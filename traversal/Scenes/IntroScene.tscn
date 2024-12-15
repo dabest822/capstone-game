@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://xv45gf131qvb"]
+[gd_scene load_steps=63 format=3 uid="uid://xv45gf131qvb"]
 
 [ext_resource type="Texture2D" uid="uid://cl08kotd83dia" path="res://Lab/maintower.png" id="1_2hl51"]
 [ext_resource type="Material" uid="uid://cq3we604tsnce" path="res://Shaders/2d3dsecond.tres" id="1_4ukqo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/2d3dtest.gd" id="4_vnk8f"]
 [ext_resource type="Texture2D" uid="uid://byfcamhsxvejd" path="res://Lab/lablab.png" id="5_h0aej"]
 [ext_resource type="Texture2D" uid="uid://da1c5xe67jyb7" path="res://Sprites/MainCH/new best alt.png" id="5_tx8eo"]
+[ext_resource type="Material" uid="uid://byagyfbyp6rr6" path="res://Shaders/lightningstrikes.tres" id="6_2xxco"]
 [ext_resource type="Material" uid="uid://dt5d3nhef14an" path="res://Shaders/2d3d.tres" id="6_rdsad"]
 [ext_resource type="Texture2D" uid="uid://c8tmp1oujpg7k" path="res://Textures/wall.png" id="7_unw8f"]
 [ext_resource type="Texture2D" uid="uid://bslud0mr6onjo" path="res://Sprites/Floor.png" id="9_kt787"]
@@ -415,11 +416,16 @@ texture = ExtResource("9_kt787")
 [node name="LabHQ" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LabHQ"]
+[node name="Rain" type="TextureRect" parent="ParallaxBackground/LabHQ"]
 material = ExtResource("4_4gsyt")
 offset_right = 1157.0
 offset_bottom = 230.0
 texture = ExtResource("5_h0aej")
+
+[node name="Lightning" type="ColorRect" parent="ParallaxBackground/LabHQ"]
+material = ExtResource("6_2xxco")
+offset_right = 1157.0
+offset_bottom = 230.0
 
 [node name="IDK" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -1

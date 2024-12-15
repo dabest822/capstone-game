@@ -1,12 +1,17 @@
 extends CanvasLayer
 
-@onready var pause_menu_music = $PauseMenuMusic  # Optional: Music for Pause Menu
+@onready var pause_menu_music = $Panel/PauseMenuMusic  # Optional: Music for Pause Menu
+@onready var overlay = $Panel/Transparency  # Reference to the transparent overlay
 
 func _ready():
 	# Play music if available
 	if pause_menu_music:
 		pause_menu_music.play()
 	print("Pause Menu Ready!")
+	
+	if overlay:
+		overlay.color = Color(0, 0, 0, 0.5)  # Black color with 50% transparency
+		overlay.size = get_viewport().size
 
 func _process(delta):
 	# Detect the "returntogame" input

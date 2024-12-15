@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0ahmi5ugpah5"]
+[gd_scene load_steps=15 format=3 uid="uid://d0ahmi5ugpah5"]
 
 [ext_resource type="Script" path="res://Scripts/EnterWater.gd" id="1_0gqlv"]
 [ext_resource type="Material" uid="uid://bqj1hae506ee3" path="res://Water/water1.tres" id="2_3p88o"]
@@ -8,6 +8,8 @@
 [ext_resource type="Material" uid="uid://c7evcysg2suhc" path="res://Shaders/godrays.tres" id="6_03wcs"]
 [ext_resource type="Script" path="res://Scripts/godrays.gd" id="7_6n6li"]
 [ext_resource type="Material" uid="uid://b2q3ws6sygdbq" path="res://Shaders/Earth.tres" id="8_daoij"]
+[ext_resource type="Material" uid="uid://byagyfbyp6rr6" path="res://Shaders/lightningstrikes.tres" id="9_okxvt"]
+[ext_resource type="Material" uid="uid://5akagm5pdv2w" path="res://Shaders/VHSEffect.tres" id="10_ptoux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07jhy"]
 size = Vector2(1023, 48)
@@ -70,3 +72,18 @@ offset_left = 889.0
 offset_top = 375.0
 offset_right = 1053.0
 offset_bottom = 539.0
+
+[node name="Lightning" type="ColorRect" parent="."]
+material = ExtResource("9_okxvt")
+offset_left = 423.0
+offset_top = 339.0
+offset_right = 1036.0
+offset_bottom = 613.0
+
+[node name="VHS" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("10_ptoux")
+offset_left = 466.0
+offset_top = 198.0
+offset_right = 787.0
+offset_bottom = 351.0
