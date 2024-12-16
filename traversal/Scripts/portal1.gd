@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @onready var portal_area = $"../Area2DPortal"
 @onready var shader_display = $"../../ShaderDisplay"
 var is_transitioning: bool = false
+var player_in_portal: bool = false
 
 func _ready():
 	setup_portal()
@@ -14,27 +15,36 @@ func _ready():
 	portal_area.body_entered.connect(_on_player_entered)
 	portal_area.body_exited.connect(_on_player_exited)
 
+func get_next_scene() -> String:
+	var current_scene = get_tree().current_scene.scene_file_path
+	
+	match current_scene:
+		"res://Scenes/PrehistoricEra.tscn":
+			return "res://Scenes/ComingSoon.tscn"
+		_:  # Default case for other scenes
+			return "res://Scenes/PrehistoricEra.tscn"
+
 func _on_player_entered(body):
-	if body is CharacterBody2D:
-		print("Starting transition sequence...")
-		if get_node("/root/TransitionManager"):  # Check if TransitionManager exists
-			get_node("/root/TransitionManager").transition_to_scene("res://Scenes/PrehistoricEra.tscn")
-		else:
-			print("TransitionManager not found!")
+	# Check if it's specifically the player (not enemies)
+	if body.name == "CharacterBody2D1" and !is_transitioning:
+		player_in_portal = true
+		print("Player entered portal area")
+		trigger_transition()
 
 func _on_player_exited(body):
-	if body is CharacterBody2D:
-		pass
+	if body.name == "CharacterBody2D1":
+		player_in_portal = false
+		print("Player exited portal area")
 
 func trigger_transition():
 	if is_transitioning:
 		return
-		
+	
 	is_transitioning = true
 	print("Making shader visible")
 	
 	if shader_display:
-		shader_display.start_transition()  # Use the new method
+		shader_display.start_transition()
 	
 	print("Hiding player and map")
 	var nodes_to_hide = [
@@ -46,7 +56,6 @@ func trigger_transition():
 		if node:
 			node.hide()
 	
-	# Create scene change timer
 	var timer = Timer.new()
 	add_child(timer)
 	timer.one_shot = true
@@ -58,8 +67,8 @@ func _on_transition_complete():
 	print("Timer completed, changing scene...")
 	if not is_inside_tree():
 		return
-		
-	var next_scene = "res://Scenes/PrehistoricEra.tscn"
+	
+	var next_scene = get_next_scene()
 	print("Loading scene: ", next_scene)
 	
 	if get_tree():

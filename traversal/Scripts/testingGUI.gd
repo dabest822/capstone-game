@@ -12,6 +12,18 @@ var ability_cooldown = 5.0  # Seconds
 var ability_ready = true
 var cooldown_time_left = 0.0
 
+func _ready():
+	# Force immediate update of health bar
+	health_bar.value = max_health  # This should be 100
+	health_bar.min_value = 0
+	health_bar.max_value = max_health
+	
+	# Set initial values for the number display
+	update_health_label()
+	
+	# Force a redraw
+	health_bar.queue_redraw()
+
 func _process(delta):
 	if not ability_ready:
 		cooldown_time_left -= delta

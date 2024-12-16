@@ -19,6 +19,7 @@ var is_in_special_animation = false
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
 @onready var health_bar = $"../MainGUI/GUIRoot/MarginContainer/TopBar/HealthBar"
 @onready var invincibility_timer = Timer.new()
+@onready var music_player = $"../StoneAgeTheme"  # Adjust the path if needed
 
 func _ready():
 	# Health system setup
@@ -33,6 +34,9 @@ func _ready():
 		health_bar.value = current_health
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	
+	if music_player and !music_player.playing:
+		music_player.play()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -152,6 +156,8 @@ func trigger_portal_transition():
 	transition_timer.start()
 
 func _on_transition_complete():
+	if music_player and music_player.playing:
+		music_player.stop()
 	# We need to ensure we're still in the scene tree
 	if is_inside_tree():
 		var err = get_tree().change_scene_to_file("res://Scenes/PrehistoricEra.tscn")

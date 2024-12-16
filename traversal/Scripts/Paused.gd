@@ -63,7 +63,9 @@ func _unhandled_input(event):
 	elif Input.is_action_just_pressed("ui_up"):
 		select_previous_item()
 	elif Input.is_action_just_pressed("ui_accept"):
-		if selected_index == 2:  # Options is now index 2 instead of 3
+		if selected_index == 0:  # Continue button selected
+			GlobalSettings.toggle_pause()  # Add this line
+		elif selected_index == 2:  # Options is now index 2 instead of 3
 			hide()
 			set_process(false)
 			get_tree().paused = false

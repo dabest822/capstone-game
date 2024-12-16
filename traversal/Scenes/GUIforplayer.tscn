@@ -1,29 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://c260j13w342s1"]
+[gd_scene load_steps=7 format=3 uid="uid://c260j13w342s1"]
 
 [ext_resource type="Script" path="res://Scripts/testingGUI.gd" id="1_6dqgx"]
 [ext_resource type="Material" uid="uid://ccse7dbtrrkmj" path="res://Shaders/circle.tres" id="1_f8r8a"]
 [ext_resource type="Texture2D" uid="uid://wahmocq8k5m7" path="res://HealthBar/empty.png" id="1_tv2ky"]
-[ext_resource type="Texture2D" uid="uid://cl1yq3b6jlqp" path="res://HealthBar/white.png" id="2_vvjc2"]
 [ext_resource type="Texture2D" uid="uid://bpbf7ny3wm2bx" path="res://HealthBar/full.png" id="3_kplvg"]
 [ext_resource type="FontFile" uid="uid://dp4fm68kmm7to" path="res://Fonts/super-mario-kart-timer-font.ttf" id="5_gcsw1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0fwj1"]
 
 [node name="MainGUI" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_6dqgx")
 
 [node name="GUIRoot" type="Control" parent="."]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="GUIRoot"]
+z_index = 3
 layout_mode = 0
-offset_left = 90.0
-offset_top = 61.0
-offset_right = 222.0
-offset_bottom = 125.0
+offset_left = 30.0
+offset_top = 21.0
+offset_right = 162.0
+offset_bottom = 85.0
+scale = Vector2(1.25, 1.25)
 
 [node name="TopBar" type="HBoxContainer" parent="GUIRoot/MarginContainer"]
 layout_mode = 2
@@ -31,10 +34,10 @@ layout_mode = 2
 [node name="HealthBar" type="TextureProgressBar" parent="GUIRoot/MarginContainer/TopBar"]
 layout_mode = 2
 texture_under = ExtResource("1_tv2ky")
-texture_over = ExtResource("2_vvjc2")
-texture_progress = ExtResource("3_kplvg")
+texture_over = ExtResource("3_kplvg")
 
 [node name="NumericalHealth" type="Label" parent="GUIRoot/MarginContainer/TopBar/HealthBar"]
+visible = false
 layout_mode = 0
 offset_left = 3.0
 offset_top = 55.0
@@ -45,6 +48,7 @@ theme_override_fonts/font = ExtResource("5_gcsw1")
 theme_override_font_sizes/font_size = 200
 
 [node name="AbilityDisplay" type="Control" parent="GUIRoot/MarginContainer/TopBar"]
+visible = false
 layout_mode = 2
 
 [node name="CooldownCircle" type="TextureRect" parent="GUIRoot/MarginContainer/TopBar/AbilityDisplay"]
