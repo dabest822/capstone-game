@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://b2yw0q8dnlnrm"]
+
+[ext_resource type="Script" path="res://Scenes/ComingSoon.gd" id="1_cwvwr"]
+[ext_resource type="Texture2D" uid="uid://dgye73uv7xr02" path="res://Sprites/Thanks.png" id="1_ngcoy"]
+[ext_resource type="Texture2D" uid="uid://dvpariqixn3g1" path="res://GameOver/returntitlepressed-Photoroom.png" id="1_w0v1r"]
+[ext_resource type="Texture2D" uid="uid://d0vj2c7g1pky3" path="res://Sprites/continued.png" id="2_0a4lq"]
+[ext_resource type="Texture2D" uid="uid://de1s42mkcvrc" path="res://Pause/spritesheet.png" id="3_3kiab"]
+[ext_resource type="Texture2D" uid="uid://d10d0yu2co0n" path="res://Sprites/Quittt.png" id="7_84q3n"]
+[ext_resource type="Texture2D" uid="uid://d11ucogyl1fw3" path="res://Sprites/selectarrow.png" id="7_ykueu"]
+[ext_resource type="AudioStream" uid="uid://ddjcw1oei72k6" path="res://Music/DemoOver.mp3" id="8_jij8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k82nf"]
+atlas = ExtResource("3_3kiab")
+region = Rect2(0, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp6dv"]
+atlas = ExtResource("3_3kiab")
+region = Rect2(514, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c1j3"]
+atlas = ExtResource("3_3kiab")
+region = Rect2(1028, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5ag2"]
+atlas = ExtResource("3_3kiab")
+region = Rect2(1542, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bxkt"]
+atlas = ExtResource("3_3kiab")
+region = Rect2(2056, 0, 514, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmc66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k82nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp6dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c1j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5ag2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bxkt")
+}],
+"loop": true,
+"name": &"Sand",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cwvwr")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="ThxForPlaying" type="Sprite2D" parent="."]
+position = Vector2(330, 147)
+rotation = -0.501934
+scale = Vector2(2.68332, 2.68332)
+texture = ExtResource("1_ngcoy")
+
+[node name="Continued" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(632, 324)
+scale = Vector2(2.69583, 2.69583)
+texture = ExtResource("2_0a4lq")
+
+[node name="Hourglass" type="AnimatedSprite2D" parent="."]
+position = Vector2(1081, 563)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_pmc66")
+animation = &"Sand"
+
+[node name="ReturnToTitle" type="Button" parent="."]
+offset_left = 432.0
+offset_top = 432.0
+offset_right = 576.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
+icon = ExtResource("1_w0v1r")
+flat = true
+
+[node name="TheMenu" type="VBoxContainer" parent="."]
+offset_left = 457.0
+offset_top = 309.0
+offset_right = 1489.0
+offset_bottom = 1341.0
+scale = Vector2(0.3, 0.3)
+
+[node name="Quit" type="Button" parent="TheMenu"]
+layout_mode = 2
+icon = ExtResource("7_84q3n")
+flat = true
+
+[node name="SelectArrow" type="Sprite2D" parent="."]
+position = Vector2(430, 349)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_ykueu")
+
+[node name="DemoEndMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jij8f")
+volume_db = -15.0
+parameters/looping = true

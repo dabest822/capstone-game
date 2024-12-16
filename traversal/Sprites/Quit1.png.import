@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc21snmv0150h"
-path="res://.godot/imported/PC Computer - Re-Volt - Sky Boxes.png-66ca86e7c05fed489711401e14bba11e.ctex"
+uid="uid://c77s3ioq6gcso"
+path="res://.godot/imported/Quit1.png-7642ed33c0a1da9884340d9d222f43a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PC Computer - Re-Volt - Sky Boxes.png"
-dest_files=["res://.godot/imported/PC Computer - Re-Volt - Sky Boxes.png-66ca86e7c05fed489711401e14bba11e.ctex"]
+source_file="res://Sprites/Quit1.png"
+dest_files=["res://.godot/imported/Quit1.png-7642ed33c0a1da9884340d9d222f43a4.ctex"]
 
 [params]
 

@@ -364,7 +364,8 @@ height = 142.0
 
 [node name="StoneAgeTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_frl6e")
-volume_db = -10.0
+volume_db = -15.0
+parameters/looping = true
 
 [node name="Portal" parent="." instance=ExtResource("2_qq03v")]
 

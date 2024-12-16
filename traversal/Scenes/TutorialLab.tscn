@@ -446,7 +446,8 @@ offset_bottom = 8.0
 
 [node name="LabTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_yld62")
-volume_db = -10.0
+volume_db = -15.0
+parameters/looping = true
 
 [node name="Portal" parent="." instance=ExtResource("5_m3fgr")]
 

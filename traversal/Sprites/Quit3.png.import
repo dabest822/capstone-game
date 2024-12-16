@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3kab2a4lbiop"
-path="res://.godot/imported/Mario Arrow.png-7bb1de087ac9fb53956883164d0b1686.ctex"
+uid="uid://cbmvhgh00j702"
+path="res://.godot/imported/Quit3.png-ef78bbb25b13203431a0b0310afda349.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mario Arrow.png"
-dest_files=["res://.godot/imported/Mario Arrow.png-7bb1de087ac9fb53956883164d0b1686.ctex"]
+source_file="res://Sprites/Quit3.png"
+dest_files=["res://.godot/imported/Quit3.png-ef78bbb25b13203431a0b0310afda349.ctex"]
 
 [params]
 

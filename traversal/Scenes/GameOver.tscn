@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_7pk16"]
 [ext_resource type="Texture2D" uid="uid://n0ekshupcsxj" path="res://GameOver/retry.png" id="3_50ahs"]
 [ext_resource type="Texture2D" uid="uid://dvpariqixn3g1" path="res://GameOver/returntitlepressed-Photoroom.png" id="4_f7jmi"]
-[ext_resource type="Texture2D" uid="uid://c1afo8hlnxndj" path="res://Sprites/Game Over.png" id="5_2rban"]
+[ext_resource type="Texture2D" uid="uid://c1afo8hlnxndj" path="res://GameOver/Game Over.png" id="5_2rban"]
 [ext_resource type="Texture2D" uid="uid://d11ucogyl1fw3" path="res://Sprites/selectarrow.png" id="6_k88px"]
 [ext_resource type="Material" uid="uid://do838p8dqos40" path="res://Shaders/glitch.tres" id="7_xm0qv"]
 [ext_resource type="AudioStream" uid="uid://bo2328bib53on" path="res://Music/Game Over.mp3" id="8_chae4"]
@@ -110,3 +110,4 @@ animation = &"Drive"
 stream = ExtResource("8_chae4")
 volume_db = -22.0
 autoplay = true
+parameters/looping = true
