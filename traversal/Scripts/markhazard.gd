@@ -13,6 +13,7 @@ const INVINCIBILITY_TIME = 1.5
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_health = MAX_HEALTH
 var is_invincible = false
+var is_in_special_animation = false
 
 # Node References
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D1
@@ -30,40 +31,57 @@ func _ready():
 	if health_bar:
 		health_bar.max_value = MAX_HEALTH
 		health_bar.value = current_health
+	
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta):
-	# Add gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle Jump
-	if is_on_floor() and Input.is_action_just_pressed("ui_up"):
-		velocity.y = JUMP_VELOCITY
-		animated_sprite.play("JumpStraight")
+	# Handle special animations first
+	if Input.is_action_just_pressed("1"):
+		animated_sprite.play("Attack1")
+		is_in_special_animation = true
+	elif Input.is_action_just_pressed("3"):
+		animated_sprite.play("Attack3")
+		is_in_special_animation = true
+	elif Input.is_action_just_pressed("4"):
+		animated_sprite.play("Attack4")
+		is_in_special_animation = true
+	elif Input.is_action_just_pressed("g"):
+		animated_sprite.play("Dying")
+		is_in_special_animation = true
 
-	# Handle movement input
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction != 0:
-		if Input.is_action_pressed("ui_shift"):
-			velocity.x = direction * RUN_SPEED
-			if is_on_floor():
-				animated_sprite.play("Run")
-		else:
-			velocity.x = direction * SPEED
-			if is_on_floor():
-				animated_sprite.play("Walk")
-		animated_sprite.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if is_on_floor():
-			if animated_sprite.flip_h:
-				animated_sprite.play("Idle2")
+	# Only handle regular movement animations if not in special animation
+	if not is_in_special_animation:
+		# Handle Jump
+		if is_on_floor() and Input.is_action_just_pressed("ui_up"):
+			velocity.y = JUMP_VELOCITY
+			animated_sprite.play("JumpStraight")
+
+		# Handle movement input
+		var direction = Input.get_axis("ui_left", "ui_right")
+		if direction != 0:
+			if Input.is_action_pressed("ui_shift"):
+				velocity.x = direction * RUN_SPEED
+				if is_on_floor():
+					animated_sprite.play("Run")
 			else:
-				animated_sprite.play("Idle")
+				velocity.x = direction * SPEED
+				if is_on_floor():
+					animated_sprite.play("Walk")
+			animated_sprite.flip_h = direction < 0
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			if is_on_floor():
+				if animated_sprite.flip_h:
+					animated_sprite.play("Idle2")
+				else:
+					animated_sprite.play("Idle")
 
-	# Handle airborne animation
-	if not is_on_floor() and velocity.y < 0:
-		animated_sprite.play("JumpStraight")
+		# Handle airborne animation
+		if not is_on_floor() and velocity.y < 0:
+			animated_sprite.play("JumpStraight")
 
 	move_and_slide()
 
@@ -139,3 +157,12 @@ func _on_transition_complete():
 		var err = get_tree().change_scene_to_file("res://Scenes/PrehistoricEra.tscn")
 		if err != OK:
 			print("Error changing scene: ", err)
+
+func _on_animation_finished():
+	# Return to idle after attack animations finish
+	if animated_sprite.animation in ["Attack1", "Attack2", "Attack3", "Attack4"]:
+		is_in_special_animation = false
+		if animated_sprite.flip_h:
+			animated_sprite.play("Idle2")
+		else:
+			animated_sprite.play("Idle")
