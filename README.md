@@ -13,10 +13,10 @@ Characters: A fully animated Dr. Elena Chen character is complete and ready for 
 - Finally, if you make it to the end in the playable 1st demo level, and enter through the portal, you will see a "Thank You" screen for playing the game.
 
 Controls:
-Movement: Arrow keys
-Run: Hold Shift + Arrow keys
-Jump: Spacebar
-Pause: Esc (Pause menu can be navigated using mouse clicks or Up/Down Arrow keys)
-Attacks: Press 1, 3, and 4 to trigger three different attacks
+- Movement: Arrow keys
+- Run: Hold Shift + Arrow keys
+- Jump: Spacebar
+- Pause: Esc (Pause menu can be navigated using mouse clicks or Up/Down Arrow keys)
+- Attacks: Press 1, 3, and 4 to trigger three different attacks
 
 Wynn Casadona © 2024
