@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8qvxvjp46sdu"]
+[gd_scene load_steps=21 format=3 uid="uid://c8qvxvjp46sdu"]
 
 [ext_resource type="Texture2D" uid="uid://o8ma7wmg5o16" path="res://Sprites/Portals/best gate cropped.png" id="1_r3nc3"]
 [ext_resource type="Script" path="res://Scripts/portal1.gd" id="1_rksv3"]
 [ext_resource type="Texture2D" uid="uid://bg1pqqbvo8e02" path="res://Sprites/Portals/third row.png" id="2_h6f85"]
+[ext_resource type="AudioStream" uid="uid://0jqyvv8rs4e1" path="res://SFX/time-travel-83472.mp3" id="4_5s4bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjkwm"]
 atlas = ExtResource("1_r3nc3")
@@ -129,3 +130,7 @@ script = ExtResource("1_rksv3")
 [node name="CollisionShapePortal" type="CollisionShape2D" parent="Area2DPortal"]
 position = Vector2(881, 444)
 shape = SubResource("CapsuleShape2D_ri2bg")
+
+[node name="Traveling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5s4bj")
+volume_db = -15.0

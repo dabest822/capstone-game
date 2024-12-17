@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 @onready var portal_area = $"../Area2DPortal"
 @onready var shader_display = $"../../ShaderDisplay"
+@onready var traveling_sound = $"../Traveling"
 var is_transitioning: bool = false
 var player_in_portal: bool = false
 
@@ -45,15 +46,32 @@ func trigger_transition():
 	
 	# Stop StoneAgeTheme music
 	var stone_age_theme = get_node_or_null("../../StoneAgeTheme")
-	if stone_age_theme and stone_age_theme is AudioStreamPlayer:
+	if stone_age_theme and stone_age_theme.is_playing():
 		print("Stopping StoneAgeTheme music...")
 		stone_age_theme.stop()
+	
+	# Stop Roar sound effect
+	var roar_sound = get_node_or_null("../../Roar")
+	if roar_sound and roar_sound.is_playing():
+		print("Stopping Roar sound effect...")
+		roar_sound.stop()
+	
+	# Play Traveling sound effect
+	if traveling_sound:
+		print("Playing Traveling sound effect...")
+		traveling_sound.play()
 	
 	# Hide MainGUI CanvasLayer
 	var main_gui = get_node_or_null("../../MainGUI")
 	if main_gui:
 		print("Hiding MainGUI...")
 		main_gui.hide()
+	
+	# Remove or hide the Tiger node
+	var tiger_node = get_node_or_null("../../Tiger")
+	if tiger_node:
+		print("Removing Tiger node and its children...")
+		tiger_node.queue_free()  # Remove the Tiger node entirely
 	
 	# Start transition shader
 	if shader_display:
@@ -73,7 +91,7 @@ func trigger_transition():
 	var timer = Timer.new()
 	add_child(timer)
 	timer.one_shot = true
-	timer.wait_time = 5.0
+	timer.wait_time = 4.0
 	timer.timeout.connect(_on_transition_complete)
 	timer.start()
 

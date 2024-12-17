@@ -9,6 +9,7 @@ enum State {PATROL, DIVING, RETURNING, CHASE}
 @export var chase_speed: float = 100.0
 @export var patrol_width: float = 400.0  # Increased patrol range
 @export var attack_cooldown: float = 1.0  # Time between attacks
+@onready var roar_sound = get_node_or_null("../Roar")  # Add this at the top near your onready vars
 
 var current_state = State.PATROL
 var patrol_direction: int = 1  # 1 for right, -1 for left
@@ -140,6 +141,8 @@ func handle_chase():
 		if animated_sprite_2.animation != "Attacking":
 			animated_sprite_2.play("Attacking")
 			velocity = direction * chase_speed * 3  # Leap towards the player
+			if roar_sound and not roar_sound.playing:
+				roar_sound.play()
 			can_attack = false
 			attack_timer = 0.0  # Reset timer only when attack starts
 	else:
