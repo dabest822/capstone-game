@@ -1595,7 +1595,7 @@ animations = [{
 size = Vector2(86, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_724ep"]
-size = Vector2(86, 39)
+size = Vector2(276.667, 60.3333)
 
 [node name="Node2D" type="Node2D"]
 
@@ -1672,6 +1672,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 
 [node name="Pterodactyl" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(-305, -168)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("13_lh1pl")
@@ -1710,11 +1711,11 @@ position = Vector2(291, 233.5)
 shape = SubResource("RectangleShape2D_xwrxq")
 
 [node name="TigerArea" type="Area2D" parent="Tiger"]
-position = Vector2(288, 234)
+position = Vector2(209, 234)
 collision_layer = 0
 
 [node name="CollisionShape2DTiger" type="CollisionShape2D" parent="Tiger/TigerArea"]
-position = Vector2(3, -0.5)
+position = Vector2(3, -11.1667)
 shape = SubResource("RectangleShape2D_724ep")
 
 [node name="Timer" type="Timer" parent="Tiger"]
