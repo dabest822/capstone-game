@@ -1672,7 +1672,6 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 
 [node name="Pterodactyl" type="CharacterBody2D" parent="."]
-visible = false
 position = Vector2(-305, -168)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("13_lh1pl")
@@ -1686,10 +1685,10 @@ animation = &"Attack"
 position = Vector2(530, 218)
 shape = SubResource("RectangleShape2D_wjvqp")
 
-[node name="Area2D" type="Area2D" parent="Pterodactyl"]
+[node name="PterodactylArea" type="Area2D" parent="Pterodactyl"]
 position = Vector2(530, 220)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pterodactyl/Area2D"]
+[node name="CollisionShape2DPterodactyl" type="CollisionShape2D" parent="Pterodactyl/PterodactylArea"]
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_moyij")
 
@@ -1710,14 +1709,18 @@ animation = &"Walking"
 position = Vector2(291, 233.5)
 shape = SubResource("RectangleShape2D_xwrxq")
 
-[node name="Area2D" type="Area2D" parent="Tiger"]
+[node name="TigerArea" type="Area2D" parent="Tiger"]
 position = Vector2(288, 234)
+collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/Area2D"]
+[node name="CollisionShape2DTiger" type="CollisionShape2D" parent="Tiger/TigerArea"]
 position = Vector2(3, -0.5)
 shape = SubResource("RectangleShape2D_724ep")
 
 [node name="Timer" type="Timer" parent="Tiger"]
+
+[connection signal="body_entered" from="Tiger/TigerArea" to="Tiger" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Tiger/TigerArea" to="Tiger" method="_on_area_2d_body_exited"]
 
 [editable path="Portal"]
 [editable path="MainGUI"]
