@@ -19,30 +19,42 @@ var target_position: Vector2
 var player: Node2D = null
 var chase_area: Area2D = null
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var animated_sprite_2 = $AnimatedSprite2D2 
-@onready var collision_area = $Area2D
+# Dynamically assigned variables
+var animated_sprite: AnimatedSprite2D
+var animated_sprite_2: AnimatedSprite2D
+var collision_area: Area2D
 
 func _ready():
+	# Fix: Use absolute paths from the root
+	animated_sprite = get_node_or_null("/root/Node2D/Pterodactyl/AnimatedSprite2D")
+	animated_sprite_2 = get_node_or_null("/root/Node2D/Tiger/AnimatedSprite2D2")
+	collision_area = $Area2D
+
+	# Debugging: Verify nodes are assigned properly
+	print("Animated Sprite (Pterodactyl): ", animated_sprite)
+	print("Animated Sprite 2 (Tiger): ", animated_sprite_2)
+
 	# Initialize patrol points
 	original_height = global_position.y
 	patrol_point_a = global_position + Vector2(-patrol_distance, 0)
 	patrol_point_b = global_position + Vector2(patrol_distance, 0)
 	patrol_target = patrol_point_b
-	
+
 	# Set up initial animations
 	if enemy_type == EnemyType.PTERODACTYL and animated_sprite:
 		animated_sprite.play("Flying")
 		print("Starting pterodactyl animations")
 	elif enemy_type == EnemyType.TIGER and animated_sprite_2:
+		print("Tiger animation logic running...")
 		animated_sprite_2.play("Walking")
-		print("Starting tiger animations")
-	
+
 	find_player()
 	
 	# Set up chase area for tiger
 	if enemy_type == EnemyType.TIGER:
 		setup_chase_area()
+		
+	print("Enemy Type: ", enemy_type)
 
 func setup_chase_area():
 	chase_area = Area2D.new()
@@ -51,9 +63,8 @@ func setup_chase_area():
 	circle.radius = detection_range
 	shape.shape = circle
 	
-	# Add these lines to ensure proper collision detection
-	chase_area.collision_layer = 0  # Don't block anything
-	chase_area.collision_mask = 1   # Detect layer 1 (where player usually is)
+	chase_area.collision_layer = 0
+	chase_area.collision_mask = 1
 	
 	chase_area.add_child(shape)
 	add_child(chase_area)
@@ -61,16 +72,18 @@ func setup_chase_area():
 	chase_area.body_exited.connect(_on_chase_area_exited)
 
 func _on_chase_area_entered(body):
-	print("Body entered chase area: ", body.name)  # Debug print
-	if enemy_type == EnemyType.TIGER and body == player:
-		print("Tiger detected player")  # Debug print
+	# Ensure the body is the player
+	if body == player:
+		print("Tiger detected player")
 		current_state = State.CHASE
 		animated_sprite_2.play("Attacking")
+	else:
+		print("Ignored body: ", body.name)  # Debug print for non-player objects
 
 func _on_chase_area_exited(body):
 	if enemy_type == EnemyType.TIGER and body == player:
 		current_state = State.PATROL
-		animated_sprite_2.play("Walking")    # Changed from animated_sprite
+		animated_sprite_2.play("Walking")
 
 func find_player():
 	var possible_paths = [
@@ -82,10 +95,10 @@ func find_player():
 	for path in possible_paths:
 		player = get_node_or_null(path)
 		if player:
-			print("Found player at path: ", path)  # Debug print
+			print("Found player at path: ", path)
 			return
 	
-	print("Player not found!")  # Debug print
+	print("Player not found!")
 
 func _physics_process(delta):
 	match enemy_type:
@@ -96,7 +109,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	# Update sprite direction
 	if velocity.x != 0:
 		match enemy_type:
 			EnemyType.PTERODACTYL:
@@ -126,13 +138,10 @@ func handle_patrol():
 	# Move towards patrol target
 	var direction = (patrol_target - global_position).normalized()
 	velocity = direction * patrol_speed
-	
-	# Switch patrol points when reached
-	if global_position.distance_to(patrol_target) < 10:
-		patrol_target = patrol_point_a if patrol_target == patrol_point_b else patrol_point_b
-		
-	# Add this to ensure Walking animation plays during patrol
+
+	# Ensure Tiger plays "Walking" animation
 	if enemy_type == EnemyType.TIGER and animated_sprite_2:
+		animated_sprite_2.stop()  # Reset animation to force playback
 		animated_sprite_2.play("Walking")
 
 func handle_diving():
@@ -163,19 +172,8 @@ func handle_chase():
 		current_state = State.PATROL
 		return
 	
-	# Move towards player
 	var chase_direction = (player.global_position - global_position).normalized()
 	velocity = chase_direction * chase_speed
 	
-	# Add this to ensure animation plays during chase
 	if animated_sprite_2:
 		animated_sprite_2.play("Attacking")
-
-func play_animation(anim_name: String):
-	match enemy_type:
-		EnemyType.PTERODACTYL:
-			if animated_sprite:
-				animated_sprite.play(anim_name)
-		EnemyType.TIGER:
-			if animated_sprite_2:
-				animated_sprite_2.play(anim_name)

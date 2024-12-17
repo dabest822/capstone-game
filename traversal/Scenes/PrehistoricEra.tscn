@@ -1699,6 +1699,7 @@ shape = SubResource("RectangleShape2D_moyij")
 position = Vector2(1836, -272)
 scale = Vector2(3, 3)
 script = ExtResource("13_lh1pl")
+enemy_type = 1
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Tiger"]
 position = Vector2(291, 233)
