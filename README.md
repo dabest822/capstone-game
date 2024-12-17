@@ -2,9 +2,9 @@ Overview:
 Traversal is a time-traveling 2D platformer where players journey through historical eras, gaining unique abilities that progressively build on one another. The game blends pixel art environments with cel-shaded characters, creating a visually distinct experience that reinforces the feeling of time travel​. Currently, when starting the game, you’ll skip the Intro Scene and the Lab Scene, both of which are still under development. The Intro Scene is planned to combine 2D and 3D visual styles, inspired by the dimension flip effect in Super Paper Mario for the Wii​. Instead, clicking "Play" takes you directly to an early version of the first level: the Prehistoric Era, where rough platforming gameplay can be tested.
 
 Features:
-Playable First Level: A rough version of the Prehistoric Era is available, featuring early platforming mechanics.
-Enemies (Planned): Six fully animated prehistoric enemies have been created but have not been implemented yet.
-Characters: A fully animated Dr. Elena Chen character is complete and ready for future scenes​.
+- Playable First Level: A rough version of the Prehistoric Era is available, featuring early platforming mechanics.
+- Enemies (Planned): Six fully animated prehistoric enemies have been created but have not been implemented yet.
+- Characters: A fully animated Dr. Elena Chen character is complete and ready for future scenes​.
 - The Game Over Scene is fully completed and ready for use but has not been added to the game yet.
 - A fully done Options Menu with volume settings scaling through the entire game.
 - A fully complete Pause menu that can be triggered/overlayed in any scene, any time (with esc).
