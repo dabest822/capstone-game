@@ -1726,6 +1726,7 @@ volume_db = -20.0
 
 [node name="StoneAgeTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_frl6e")
+volume_db = -5.0
 parameters/looping = true
 
 [connection signal="body_entered" from="Tiger/TigerArea" to="Tiger" method="_on_area_2d_body_entered"]
