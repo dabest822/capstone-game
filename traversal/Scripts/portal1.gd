@@ -43,6 +43,19 @@ func trigger_transition():
 	is_transitioning = true
 	print("Making shader visible")
 	
+	# Stop StoneAgeTheme music
+	var stone_age_theme = get_node_or_null("../../StoneAgeTheme")
+	if stone_age_theme and stone_age_theme is AudioStreamPlayer:
+		print("Stopping StoneAgeTheme music...")
+		stone_age_theme.stop()
+	
+	# Hide MainGUI CanvasLayer
+	var main_gui = get_node_or_null("../../MainGUI")
+	if main_gui:
+		print("Hiding MainGUI...")
+		main_gui.hide()
+	
+	# Start transition shader
 	if shader_display:
 		shader_display.start_transition()
 	
@@ -56,6 +69,7 @@ func trigger_transition():
 		if node:
 			node.hide()
 	
+	# Set up transition timer
 	var timer = Timer.new()
 	add_child(timer)
 	timer.one_shot = true

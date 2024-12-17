@@ -5,10 +5,10 @@ enum State {PATROL, DIVING, RETURNING, CHASE}
 
 @export var enemy_type: EnemyType
 @export var patrol_speed: float = 200.0
-@export var dive_speed: float = 300.0
-@export var chase_speed: float = 200.0
-@export var patrol_width: float = 800.0  # Increased patrol range
-@export var attack_cooldown: float = 2.0  # Time between attacks
+@export var dive_speed: float = 250.0
+@export var chase_speed: float = 100.0
+@export var patrol_width: float = 400.0  # Increased patrol range
+@export var attack_cooldown: float = 1.0  # Time between attacks
 
 var current_state = State.PATROL
 var patrol_direction: int = 1  # 1 for right, -1 for left
@@ -132,37 +132,34 @@ func handle_chase():
 		current_state = State.PATROL
 		return
 
-	# Calculate direction to the player
 	var direction = (player.global_position - global_position).normalized()
 
-	# Only attack when cooldown is ready
+	# Attack logic
 	if can_attack:
-		# Play Attacking animation and leap
+		# Start attack and leap toward the player
 		if animated_sprite_2.animation != "Attacking":
 			animated_sprite_2.play("Attacking")
-			velocity = direction * chase_speed * 2  # Leap towards the player
+			velocity = direction * chase_speed * 3  # Leap towards the player
 			can_attack = false
-			attack_timer = 0.0
+			attack_timer = 0.0  # Reset timer only when attack starts
 	else:
-		# Slowly move toward the player between attacks
+		# Increment attack timer
+		attack_timer += get_process_delta_time()
+		if attack_timer >= attack_cooldown:
+			can_attack = true  # Ready for next attack
+
+		# Move slowly toward the player between attacks
 		if animated_sprite_2.animation != "Attacking":
-			velocity = direction * patrol_speed * 0.5  # Slow movement
+			velocity = direction * patrol_speed * 0.5
 			if animated_sprite_2.animation != "Walking":
 				animated_sprite_2.play("Walking")
 
-	# Face the player
+	# Apply movement
+	move_and_slide()
+
+	# Face the player based on movement
 	if velocity.x != 0:
 		animated_sprite_2.flip_h = velocity.x > 0
-
-	# Handle cooldown timer
-	if not can_attack:
-		attack_timer += get_process_delta_time()
-		if attack_timer >= attack_cooldown:
-			can_attack = true
-
-	# Apply movement unless attacking
-	if animated_sprite_2.animation != "Attacking":
-		move_and_slide()
 
 func _on_area_2d_body_entered(body):
 	if body == self:

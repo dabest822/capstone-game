@@ -1572,7 +1572,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attacking",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1596,7 +1596,7 @@ animations = [{
 size = Vector2(86, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_724ep"]
-size = Vector2(276.667, 60.3333)
+size = Vector2(236.333, 60.3333)
 
 [node name="Node2D" type="Node2D"]
 
@@ -1699,7 +1699,7 @@ shape = SubResource("RectangleShape2D_moyij")
 [node name="Timer" type="Timer" parent="Pterodactyl"]
 
 [node name="Tiger" type="CharacterBody2D" parent="."]
-position = Vector2(1836, -272)
+position = Vector2(1575, -272)
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 5
@@ -1709,20 +1709,21 @@ enemy_type = 1
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Tiger"]
 position = Vector2(291, 233)
 sprite_frames = SubResource("SpriteFrames_drnil")
-animation = &"Attacking"
-frame_progress = 0.904848
+animation = &"Walking"
+frame = 3
+frame_progress = 0.73873
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger"]
 position = Vector2(291, 233.5)
 shape = SubResource("RectangleShape2D_xwrxq")
 
 [node name="TigerArea" type="Area2D" parent="Tiger"]
-position = Vector2(209, 234)
+position = Vector2(289, 234)
 collision_layer = 0
 
 [node name="CollisionShape2DTiger" type="CollisionShape2D" parent="Tiger/TigerArea"]
 light_mask = 0
-position = Vector2(3, -11.1667)
+position = Vector2(1.00002, -9.66667)
 shape = SubResource("RectangleShape2D_724ep")
 
 [node name="Timer" type="Timer" parent="Tiger"]
