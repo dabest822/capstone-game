@@ -14,7 +14,7 @@ var slowing_elapsed = 0.0
 var rotation_speed_initial = 0.01 # Default initial rotation speed
 var rotation_speed_target = 0.0 # Final rotation speed
 var rotation_y_angle = 30.0 # Keep track of Earth's rotation in degrees
-var scene_to_load = "res://Scenes/IntroScene.tscn" # Path to the scene to load
+var scene_to_load = "res://Scenes/PrehistoricEra.tscn" # Path to the scene to load
 
 func _ready():
 	# Set the initial camera position and zoom level

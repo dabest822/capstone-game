@@ -425,8 +425,10 @@ texture = ExtResource("5_h0aej")
 
 [node name="Lightning" type="ColorRect" parent="ParallaxBackground/LabHQ"]
 material = ExtResource("6_2xxco")
-offset_right = 1157.0
-offset_bottom = 230.0
+offset_left = 14.0
+offset_top = 3.0
+offset_right = 1171.0
+offset_bottom = 233.0
 
 [node name="IDK" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -1
@@ -461,7 +463,7 @@ texture = ExtResource("1_2hl51")
 
 [node name="CharacterBody2D1" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(201, -337)
+position = Vector2(200, -338)
 collision_mask = 2
 script = ExtResource("4_vnk8f")
 
@@ -489,18 +491,34 @@ position = Vector2(576, 324)
 
 [node name="RightWall" type="Polygon2D" parent="."]
 material = ExtResource("6_rdsad")
-position = Vector2(177.042, 400.245)
+position = Vector2(379, 63)
 scale = Vector2(3.6523, 1.03808)
 texture = ExtResource("7_unw8f")
 polygon = PackedVector2Array(99.3779, 144.261, 81.8547, 114.398, 82.1285, 202.06, 98.0089, 238.665)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
 
+[node name="RightWall2" type="Polygon2D" parent="."]
+material = ExtResource("6_rdsad")
+position = Vector2(448.134, 123.127)
+scale = Vector2(2.31954, 0.628269)
+texture = ExtResource("7_unw8f")
+polygon = PackedVector2Array(99.5306, 144.64, 81.8547, 114.398, 83.3985, 199.444, 99.7221, 238.08)
+uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
+
 [node name="LeftWall" type="Polygon2D" parent="."]
 material = ExtResource("6_rdsad")
-position = Vector2(266, 198)
+position = Vector2(466, -139)
 scale = Vector2(0.362698, 1.89869)
 texture = ExtResource("7_unw8f")
 polygon = PackedVector2Array(203.19, 167.357, 43.1342, 181.839, 78, 237, 228.841, 218.046)
+uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
+
+[node name="LeftWall2" type="Polygon2D" parent="."]
+material = ExtResource("6_rdsad")
+position = Vector2(533, 14)
+scale = Vector2(0.21, 1.099)
+texture = ExtResource("7_unw8f")
+polygon = PackedVector2Array(203.19, 167.357, 43.1342, 181.839, 76.1902, 237.489, 223.809, 218.38)
 uv = PackedVector2Array(256.237, -5.34058e-05, -0.0001297, -0.237091, 0.473938, 255.763, 256, 255.763)
 
 [node name="Ceiling" type="Polygon2D" parent="."]
