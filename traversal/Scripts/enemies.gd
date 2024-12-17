@@ -19,8 +19,8 @@ var target_position: Vector2
 var player: Node2D = null
 var chase_area: Area2D = null
 
-@onready var animated_sprite = $"AnimatedSprite2D" if enemy_type == EnemyType.PTERODACTYL else null
-@onready var animated_sprite_2 = $"AnimatedSprite2D2" if enemy_type == EnemyType.TIGER else null
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite_2 = $AnimatedSprite2D2 
 @onready var collision_area = $Area2D
 
 func _ready():
@@ -31,13 +31,12 @@ func _ready():
 	patrol_target = patrol_point_b
 	
 	# Set up initial animations
-	match enemy_type:
-		EnemyType.PTERODACTYL:
-			if animated_sprite:
-				animated_sprite.play("Flying")
-		EnemyType.TIGER:
-			if animated_sprite_2:
-				animated_sprite_2.play("Walking")
+	if enemy_type == EnemyType.PTERODACTYL and animated_sprite:
+		animated_sprite.play("Flying")
+		print("Starting pterodactyl animations")
+	elif enemy_type == EnemyType.TIGER and animated_sprite_2:
+		animated_sprite_2.play("Walking")
+		print("Starting tiger animations")
 	
 	find_player()
 	
@@ -51,15 +50,22 @@ func setup_chase_area():
 	var circle = CircleShape2D.new()
 	circle.radius = detection_range
 	shape.shape = circle
+	
+	# Add these lines to ensure proper collision detection
+	chase_area.collision_layer = 0  # Don't block anything
+	chase_area.collision_mask = 1   # Detect layer 1 (where player usually is)
+	
 	chase_area.add_child(shape)
 	add_child(chase_area)
 	chase_area.body_entered.connect(_on_chase_area_entered)
 	chase_area.body_exited.connect(_on_chase_area_exited)
 
 func _on_chase_area_entered(body):
+	print("Body entered chase area: ", body.name)  # Debug print
 	if enemy_type == EnemyType.TIGER and body == player:
+		print("Tiger detected player")  # Debug print
 		current_state = State.CHASE
-		animated_sprite_2.play("Attacking")  # Changed from animated_sprite
+		animated_sprite_2.play("Attacking")
 
 func _on_chase_area_exited(body):
 	if enemy_type == EnemyType.TIGER and body == player:
@@ -76,7 +82,10 @@ func find_player():
 	for path in possible_paths:
 		player = get_node_or_null(path)
 		if player:
+			print("Found player at path: ", path)  # Debug print
 			return
+	
+	print("Player not found!")  # Debug print
 
 func _physics_process(delta):
 	match enemy_type:
@@ -121,13 +130,10 @@ func handle_patrol():
 	# Switch patrol points when reached
 	if global_position.distance_to(patrol_target) < 10:
 		patrol_target = patrol_point_a if patrol_target == patrol_point_b else patrol_point_b
-	
-	# Check for player to initiate dive (pterodactyl only)
-	if enemy_type == EnemyType.PTERODACTYL and player and global_position.distance_to(player.global_position) < detection_range:
-		current_state = State.DIVING
-		if animated_sprite:
-			animated_sprite.play("FastFlying")
-		target_position = player.global_position
+		
+	# Add this to ensure Walking animation plays during patrol
+	if enemy_type == EnemyType.TIGER and animated_sprite_2:
+		animated_sprite_2.play("Walking")
 
 func handle_diving():
 	if not player:
@@ -160,6 +166,10 @@ func handle_chase():
 	# Move towards player
 	var chase_direction = (player.global_position - global_position).normalized()
 	velocity = chase_direction * chase_speed
+	
+	# Add this to ensure animation plays during chase
+	if animated_sprite_2:
+		animated_sprite_2.play("Attacking")
 
 func play_animation(anim_name: String):
 	match enemy_type:
