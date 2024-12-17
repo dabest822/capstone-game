@@ -4,11 +4,11 @@ enum EnemyType {PTERODACTYL, TIGER}
 enum State {PATROL, DIVING, RETURNING, CHASE}
 
 @export var enemy_type: EnemyType
-@export var patrol_speed: float = 150.0
+@export var patrol_speed: float = 200.0
 @export var dive_speed: float = 300.0
 @export var chase_speed: float = 200.0
-@export var patrol_width: float = 400.0  # Increased from 200 to 400
-@export var attack_cooldown: float = 3.0  # Time between attacks
+@export var patrol_width: float = 800.0  # Increased patrol range
+@export var attack_cooldown: float = 2.0  # Time between attacks
 
 var current_state = State.PATROL
 var patrol_direction: int = 1  # 1 for right, -1 for left
@@ -41,11 +41,9 @@ func find_player():
 		player = get_node_or_null(path)
 		if player:
 			print("Found player at path: ", path)
-			player.collision_layer = 1
-			player.collision_mask = 1
-			print("Player collision settings - Layer: ", player.collision_layer, ", Mask: ", player.collision_mask)
 			return
-	print("Player not found in any path!")
+			
+	print("Player not found!")
 
 func setup_enemy():
 	if enemy_type == EnemyType.PTERODACTYL:
@@ -67,29 +65,24 @@ func setup_tiger():
 	
 	if animated_sprite_2:
 		animated_sprite_2.play("Walking")
+		animated_sprite_2.animation_finished.connect(_on_animation_finished)  # Connect signal
 		print("Starting tiger animations")
 	
 	if tiger_area:
-		setup_tiger_area()
-
-func setup_tiger_area():
-	# Clear any existing connections
-	if tiger_area.body_entered.is_connected(_on_area_2d_body_entered):
-		tiger_area.body_entered.disconnect(_on_area_2d_body_entered)
-	if tiger_area.body_exited.is_connected(_on_area_2d_body_exited):
-		tiger_area.body_exited.disconnect(_on_area_2d_body_exited)
-	
-	# Set up area properties
-	tiger_area.collision_layer = 0
-	tiger_area.collision_mask = 1
-	tiger_area.monitorable = true
-	tiger_area.monitoring = true
-	
-	# Connect signals
-	tiger_area.body_entered.connect(_on_area_2d_body_entered)
-	tiger_area.body_exited.connect(_on_area_2d_body_exited)
-	
-	print("Tiger area setup complete - Layer: ", tiger_area.collision_layer, ", Mask: ", tiger_area.collision_mask)
+		# Setup tiger detection area
+		tiger_area.collision_layer = 0  # No collision
+		tiger_area.collision_mask = 1   # Only detect player
+		tiger_area.monitoring = true
+		tiger_area.monitorable = true
+		
+		# Connect signals for detection
+		if tiger_area.body_entered.is_connected(_on_area_2d_body_entered):
+			tiger_area.body_entered.disconnect(_on_area_2d_body_entered)
+		if tiger_area.body_exited.is_connected(_on_area_2d_body_exited):
+			tiger_area.body_exited.disconnect(_on_area_2d_body_exited)
+		
+		tiger_area.body_entered.connect(_on_area_2d_body_entered)
+		tiger_area.body_exited.connect(_on_area_2d_body_exited)
 
 func _physics_process(delta):
 	if not can_attack:
@@ -97,7 +90,7 @@ func _physics_process(delta):
 		if attack_timer >= attack_cooldown:
 			can_attack = true
 			attack_timer = 0.0
-	
+			
 	if enemy_type == EnemyType.PTERODACTYL:
 		handle_pterodactyl_states()
 	elif enemy_type == EnemyType.TIGER:
@@ -121,23 +114,17 @@ func handle_patrol():
 		
 		# Set velocity based on patrol direction
 		velocity.x = patrol_speed * patrol_direction
-		velocity.y = 0  # Keep vertical velocity at 0 for horizontal movement
+		velocity.y = 0
 		
-		# Update sprite direction
 		if animated_sprite_2:
-			animated_sprite_2.flip_h = patrol_direction < 0
+			animated_sprite_2.flip_h = patrol_direction > 0
 			animated_sprite_2.play("Walking")
-		
-		# Debug patrol boundaries
-		print("Current position: ", global_position.x, " Left bound: ", left_bound, " Right bound: ", right_bound)
 		
 		# Check if we need to turn around
 		if (patrol_direction > 0 and global_position.x >= right_bound) or \
 		   (patrol_direction < 0 and global_position.x <= left_bound):
-			patrol_direction *= -1  # Reverse direction
-			print("Turning around, new direction: ", patrol_direction)
+			patrol_direction *= -1
 			
-	# Move the enemy
 	move_and_slide()
 
 func handle_chase():
@@ -145,35 +132,58 @@ func handle_chase():
 		current_state = State.PATROL
 		return
 
+	# Calculate direction to the player
 	var direction = (player.global_position - global_position).normalized()
-	
+
+	# Only attack when cooldown is ready
 	if can_attack:
-		velocity = direction * chase_speed * 2  # Leap towards player
-		if animated_sprite_2:
-			animated_sprite_2.flip_h = player.global_position.x < global_position.x
+		# Play Attacking animation and leap
+		if animated_sprite_2.animation != "Attacking":
 			animated_sprite_2.play("Attacking")
-		can_attack = false
-		attack_timer = 0.0
-		print("Tiger attacking!")
+			velocity = direction * chase_speed * 2  # Leap towards the player
+			can_attack = false
+			attack_timer = 0.0
 	else:
-		# Stay in place between attacks
-		velocity = Vector2.ZERO
-	
-	move_and_slide()
+		# Slowly move toward the player between attacks
+		if animated_sprite_2.animation != "Attacking":
+			velocity = direction * patrol_speed * 0.5  # Slow movement
+			if animated_sprite_2.animation != "Walking":
+				animated_sprite_2.play("Walking")
+
+	# Face the player
+	if velocity.x != 0:
+		animated_sprite_2.flip_h = velocity.x > 0
+
+	# Handle cooldown timer
+	if not can_attack:
+		attack_timer += get_process_delta_time()
+		if attack_timer >= attack_cooldown:
+			can_attack = true
+
+	# Apply movement unless attacking
+	if animated_sprite_2.animation != "Attacking":
+		move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body == self or body.collision_layer != 1:
+	if body == self:
 		return
-	
-	# Check if the body is the player by its collision layer and not self
-	var distance = global_position.distance_to(body.global_position)
-	print("Player detected at distance: ", distance)
-	current_state = State.CHASE
+		
+	if body.collision_layer == 1 and body != self:
+		print("Player detected - starting chase!")
+		current_state = State.CHASE
 
 func _on_area_2d_body_exited(body):
-	# Check if the body is the player by its collision layer
+	if body == self:
+		return
+		
 	if body.collision_layer == 1 and body != self:
-		print("Player left area - returning to patrol")
+		print("Player left - returning to patrol")
 		current_state = State.PATROL
 		if animated_sprite_2:
 			animated_sprite_2.play("Walking")
+
+func _on_animation_finished():
+	if animated_sprite_2.animation == "Attacking":
+		print("Attack animation finished!")
+		can_attack = true
+		animated_sprite_2.play("Walking")
